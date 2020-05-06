@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "393417654279",
+    "firebase_url": "https://polyfast.firebaseio.com",
+    "project_id": "polyfast",
+    "storage_bucket": "polyfast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393417654279:android:446cfaa126cd9afbb2eaa2",
+        "android_client_info": {
+          "package_name": "com.example.polyfast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393417654279-g0ed1eua7m3ee4dmspjiueki2tcc44rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwHf7oflIp3JDM4ln5KBeRlIq-6GSZwjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393417654279-g0ed1eua7m3ee4dmspjiueki2tcc44rf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

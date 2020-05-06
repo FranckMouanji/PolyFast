@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.polyfast.Activities.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.polyfast.Activities.ui.home.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_home" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cour"
+        android:name="com.example.polyfast.Activities.ui.Cours.CourFragment"
+        android:label="@string/cour"
+        tools:layout="@layout/fragment_cour" />
+
+    <fragment
+        android:id="@+id/nav_exercice"
+        android:name="com.example.polyfast.Activities.ui.Exercices.ExercicesFragment"
+        android:label="@string/exercice"
+        tools:layout="@layout/fragment_exercices" />
+
+    <fragment
+        android:id="@+id/nav_correction_exercice"
+        android:name="com.example.polyfast.Activities.ui.correction_exercice.Correction_exerciceFragment"
+        android:label="@string/corection"
+        tools:layout="@layout/correction_exercice_fragment" />
+
+    <fragment
+        android:id="@+id/nav_uplode_file"
+        android:name="com.example.polyfast.Activities.ui.upload_file.upload_fileFragment"
+        android:label="@string/upload"
+        tools:layout="@layout/upload_file_fragment" />
+
+    <fragment
+        android:id="@+id/nav_a_propos"
+        android:name="com.example.polyfast.Activities.ui.a_propos.A_ProposFragment"
+        android:label="@string/a_propos"
+        tools:layout="@layout/a__propos_fragment" />
+
+    <fragment
+        android:id="@+id/nav_nous_contacter"
+        android:name="com.example.polyfast.Activities.ui.Nous_Contacter.Nous_ContacterFragment"
+        android:label="@string/nous_contacter"
+        tools:layout="@layout/nous__contacter_fragment" />
+
+    <fragment
+        android:id="@+id/nav_compte"
+        android:name="com.example.polyfast.Activities.ui.Compte.CompteFragment"
+        android:label="@string/compte"
+        tools:layout="@layout/compte_fragment"/>
+</navigation>

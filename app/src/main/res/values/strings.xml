@@ -1,0 +1,182 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">PolyFast</string>
+    <string name="e_mail">E-mail</string>
+    <string name="entrer_votre_adresse_mail">entrer votre adresse mail</string>
+    <string name="votre_adresse_mail_est_invalide">votre adresse mail est invalide</string>
+    <string name="mot_de_passe">mot de passe</string>
+    <string name="entrer_votre_mot_de_passe">entrer votre mot de passe</string>
+    <string name="mot_de_passe_oublier">mot de passe oublier?</string>
+    <string name="envoyer">envoyer</string>
+    <string name="text_niveau">choisissez votre niveau</string>
+    <string name="text_filiere">choisissez votre filière</string>
+    <string name="chevauche">chevauche</string>
+    <string name="uniquement_le_niveau_2">normal</string>
+    <string name="etat">état</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="user_exist">cette adresse mail n\'est pas disponible</string>
+    <string name="explication_de_questionnaire">Bienvenue au questtionnaire de reinitialisation de mot de passe repondez correctement au question posé</string>
+    <string name="question_1">1-quelle est votre marque de chaussure préféré</string>
+    <string name="question_2">2-quelle est votre animal préféré</string>
+    <string name="question_3">3-quelle est le nom avec lequel vous appelez votre mère</string>
+    <string name="text_erreur_question_1">la réponse à la question 1 ne correspond pas</string>
+    <string name="text_erreur_question_2">la réponse à la question 2 ne correspond pas</string>
+    <string name="text_erreur_question_3">la réponse à la question 3 ne correspond pas</string>
+    <string name="users_not_exist">"cette adresse mail n'est pas disponible "</string>
+    <string name="pas_de_compte_cr_er_un">pas de compte? créer un</string>
+    <string name="tous_les_champs_sont_requis">tous les champs sont requis</string>
+    <string name="choisir_un_tat">choisir un état</string>
+    <string name="error_caracter">le mot de passe doit depasser 6 caractères</string>
+    <string name="confirmer_votre_mot_de_passe">confirmer votre mot de passe</string>
+    <string name="no_match">les mots de passe ne correspondent pas</string>
+    <string name="professeur">professeur</string>
+    <string name="etudiant">élève</string>
+    <string name="statut">Statut</string>
+    <string name="back">retour</string>
+    <string name="reussi">reussi</string>
+    <string-array name="niveau">
+        <item>Tle</item>
+        <item>1ere</item>
+        <item>2nd</item>
+        <item>3eme</item>
+        <item>4eme</item>
+        <item>5eme</item>
+        <item>6eme</item>
+    </string-array>
+
+    <string-array name="matiere">
+        <item>Mathematiques</item>
+        <item>Physique/Chimie</item>
+        <item>SVT</item>
+        <item>Histoire/Geographie/ECM</item>
+        <item>ESF/TM</item>
+        <item>EPS</item>
+    </string-array>
+
+
+    <string-array name="classe_de_6eme">
+        <item>m1</item>
+        <item>m2</item>
+        <item>m3</item>
+        <item>m4</item>
+    </string-array>
+
+    <string-array name="classe_de_5eme">
+        <item>m1</item>
+        <item>m2</item>
+        <item>m3</item>
+        <item>m4</item>
+    </string-array>
+
+    <string-array name="classe_de_4eme">
+        <item>A1</item>
+        <item>A2</item>
+        <item>E1</item>
+        <item>E2</item>
+    </string-array>
+
+    <string-array name="classe_de_3eme">
+        <item>A1</item>
+        <item>A2</item>
+        <item>E1</item>
+        <item>E2</item>
+    </string-array>
+
+    <string-array name="classe_de_2nd">
+        <item>A4all</item>
+        <item>Aesp</item>
+        <item>C</item>
+    </string-array>
+
+    <string-array name="classe_de_1ere">
+        <item>A4all</item>
+        <item>Aesp</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="classe_de_Tle">
+        <item>A4all</item>
+        <item>Aesp</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="nom_matiere">
+        <item>Mathematiques</item>
+        <item>Physique</item>
+        <item>Chimie</item>
+        <item>SVT</item>
+        <item>Histoire</item>
+        <item>Geographie</item>
+        <item>ECM</item>
+        <item>ESF/TM</item>
+        <item>EPS</item>
+    </string-array>
+
+
+    <string-array name="Categorie">
+        <item>Cour</item>
+        <item>Exercice</item>
+        <item>Correction Exercice</item>
+    </string-array>
+
+    <string-array name="Categorie_student">
+        <item>Exercice</item>
+        <item>Correction Exercice</item>
+    </string-array>
+
+    <string-array name="niveau_chevauchant">
+        <item>Licence 1</item>
+        <item>Licence 2</item>
+    </string-array>
+
+
+    <string name="title_activity_main2" tools:ignore="MissingTranslation">Main2Activity</string>
+    <string name="navigation_drawer_open" tools:ignore="MissingTranslation">Open navigation drawer</string>
+    <string name="navigation_drawer_close" tools:ignore="MissingTranslation">Close navigation drawer</string>
+    <string name="nav_header_title" tools:ignore="MissingTranslation">Android Studio</string>
+    <string name="nav_header_subtitle" tools:ignore="MissingTranslation">android.studio@android.com</string>
+    <string name="nav_header_desc" tools:ignore="MissingTranslation">Navigation header</string>
+    <string name="action_settings" tools:ignore="MissingTranslation">Settings</string>
+
+    <string name="menu_home" tools:ignore="MissingTranslation">Home</string>
+    <string name="menu_gallery" tools:ignore="MissingTranslation">Gallery</string>
+    <string name="menu_slideshow" tools:ignore="MissingTranslation">Slideshow</string>
+
+    <string name="home_second" tools:ignore="MissingTranslation">Home Second</string>
+    <string name="title_activity_plate_form" tools:ignore="MissingTranslation">PlateForm</string>
+    <string name="cour">cours</string>
+    <string name="exercice">Exercice</string>
+    <string name="corection">essaie de correction</string>
+    <string name="nouveau">uploder un nouveau fichier</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" tools:ignore="MissingTranslation">Hello blank fragment</string>
+    <string name="a_propos">a propos</string>
+    <string name="information">information</string>
+    <string name="nous_contacter">nous contacter</string>
+    <string name="upload">ajouter un fichier</string>
+    <string name="app_mail">polyFast@gmail.com</string>
+    <string name="erreur_match_mot_pass">le mot de passe ou l\'adresse e-mail est incorrect</string>
+    <string name="deconnexion">Deconnexion</string>
+    <string name="oui">Oui</string>
+    <string name="message_avertissement_deconnexion">Voulez-vous vraiment vous déconnecter</string>
+    <string name="compte">Compte</string>
+    <string name="code_de_la_matiere">Matière</string>
+    <string name="nom_du_document">Nom du document</string>
+    <string name="fili_re">classe</string>
+    <string name="niveau">Niveau</string>
+    <string name="categorie_de_fichier">Catégorie De Fichier</string>
+    <string name="choisir_un_fichier">choisir un fichier</string>
+    <string name="pdf">.pdf</string>
+    <string name="vous_avez_oubli_le_code_de_la_matiere">vous avez oublié le code de la matiere</string>
+    <string name="vous_avez_oubli_le_nom_du_document">vous avez oublié le nom du document</string>
+    <string name="selection_fichier">Selectionner un fichier PDF</string>
+    <string name="verif_connexion">vérifiez votre connexion puis reessayez</string>
+    <string name="wait">Patientez un instant...</string>
+    <string name="upload_by">"uploader par "</string>
+    <string name="contenu_vide">contenu vide</string>
+    <string name="no_download">aucun téléchargement....</string>
+    <string name="select_file">Selectionner un fichier</string>
+</resources>

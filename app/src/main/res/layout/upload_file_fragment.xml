@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/couleur_de_font"
+    tools:context=".Activities.ui.upload_file.upload_fileFragment">
+
+    <ImageView
+        android:id="@+id/logo_polyFast"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/polifast"
+        tools:ignore="ContentDescription" />
+
+
+    <ScrollView
+        android:id="@+id/layout_of_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nom_du_document"
+                android:textSize="20sp"
+                />
+            <EditText
+                android:id="@+id/nom_fichier_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+            <TextView
+                android:id="@+id/empty_nom_document_teacher"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:text="@string/vous_avez_oubli_le_nom_du_document"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/niveau"
+                android:textSize="20sp"
+                />
+            <Spinner
+                android:id="@+id/choix_niveau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/niveau"
+                android:prompt="@string/text_niveau"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fili_re"
+                android:textSize="20sp"
+                />
+            <Spinner
+                android:id="@+id/classe_6eme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_6eme"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+            <Spinner
+                android:id="@+id/classe_5eme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_5eme"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+            <Spinner
+                android:id="@+id/classe_4eme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_4eme"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+            <Spinner
+                android:id="@+id/classe_3eme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_3eme"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+            <Spinner
+                android:id="@+id/classe_2nd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_2nd"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+            <Spinner
+                android:id="@+id/classe_1ere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_1ere"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+            <Spinner
+                android:id="@+id/classe_Tle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/classe_de_Tle"
+                android:prompt="@string/text_filiere"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/categorie_de_fichier"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/choix_categorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/Categorie"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/file_name_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choisir_un_fichier"
+                    android:layout_marginBottom="25dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+id/choose_pdf_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pdf"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="7dp"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/send_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/envoyer"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/layout_of_normal_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/code_de_la_matiere"
+                android:textSize="20sp"
+                />
+
+            <Spinner
+                android:id="@+id/nom_matiere_normal_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/nom_matiere"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nom_du_document"
+                android:textSize="20sp"
+                />
+            <EditText
+                android:id="@+id/nom_fichier_normal_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+            <TextView
+                android:id="@+id/empty_nom_document_student"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:text="@string/vous_avez_oubli_le_nom_du_document"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/categorie_de_fichier"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/choix_categorie_normal_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/Categorie_student"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/file_name_normal_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choisir_un_fichier"
+                    android:layout_marginBottom="25dp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+id/choose_pdf_normal_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pdf"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="7dp"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/send_normal_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/envoyer"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

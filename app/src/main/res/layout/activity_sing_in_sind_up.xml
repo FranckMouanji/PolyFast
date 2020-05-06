@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/couleur_de_font"
+    tools:context=".Activities.Sing_in_sind_up">
+
+    <ImageView
+        android:id="@+id/logo_polyFast"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/polifast"
+        android:layout_above="@id/layout_siging"
+        tools:ignore="ContentDescription" />
+
+    <ScrollView
+        android:id="@+id/layout_siging"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+            <EditText
+                android:id="@+id/login_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/e_mail"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/empty_login_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_adresse_mail"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/error_login_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votre_adresse_mail_est_invalide"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mot_de_passe"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPassword"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/empty_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_mot_de_passe"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/password_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mot_de_passe_oublier"
+                android:textColor="@color/black"
+                android:layout_marginTop="-20dp"
+                android:layout_gravity="right"
+                android:layout_marginBottom="25dp"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/error_mail_or_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/erreur_match_mot_pass"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/sigin_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bouton"
+                android:text="@string/envoyer"
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <TextView
+                android:id="@+id/create_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/pas_de_compte_cr_er_un"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/layout_sigiup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="200dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nom"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill" />
+            <TextView
+                android:id="@+id/empty_create_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_adresse_mail"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prenom"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill" />
+            <TextView
+                android:id="@+id/empty_create_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_adresse_mail"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/statut"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/prof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/professeur"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:onClick="onRadioButtonClicked"
+                    android:layout_marginEnd="30dp"
+                    />
+
+                <RadioButton
+                    android:id="@+id/etudiant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etudiant"
+                    android:checked="true"
+                    android:textStyle="bold"
+                    android:onClick="onRadioButtonClicked"
+                    android:textSize="20sp"
+                    />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/student_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:entries="@array/niveau"
+                    android:prompt="@string/text_niveau" />
+
+                <Spinner
+                    android:id="@+id/classe_6eme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_6eme"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+                <Spinner
+                    android:id="@+id/classe_5eme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_5eme"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+                <Spinner
+                    android:id="@+id/classe_4eme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_4eme"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+                <Spinner
+                    android:id="@+id/classe_3eme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_3eme"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+                <Spinner
+                    android:id="@+id/classe_2nd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_2nd"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+                <Spinner
+                    android:id="@+id/classe_1ere"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_1ere"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+                <Spinner
+                    android:id="@+id/classe_Tle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/classe_de_Tle"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    />
+
+             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/prof_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Matiere enseigner"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:id="@+id/matiere_enseigner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/matiere"
+                    android:prompt="@string/text_filiere"
+                    android:layout_marginBottom="20dp"
+                    />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/mail_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/e_mail"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
+                tools:ignore="Autofill" />
+            <TextView
+                android:id="@+id/empty_create_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_adresse_mail"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/error_create_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votre_adresse_mail_est_invalide"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+
+            <EditText
+                android:id="@+id/password_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mot_de_passe"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPassword"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/empty_create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_mot_de_passe"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/error_caracter_of_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/error_caracter"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/confirm_password_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirmer_votre_mot_de_passe"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPassword"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/empty_confirm_create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirmer_votre_mot_de_passe"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/error_create_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_match"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:id="@+id/button_send_create_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/envoyer"
+                    android:layout_weight="50"
+                    />
+
+                <Button
+                    android:id="@+id/button_back_create_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/back"
+                    android:layout_weight="50"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <ScrollView
+        android:id="@+id/layout_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+            <EditText
+                android:id="@+id/reset_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/e_mail"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/empty_reset_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entrer_votre_adresse_mail"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/error_reset_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votre_adresse_mail_est_invalide"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/answer_first_question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/empty_answer_first_question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_erreur_question_1"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_2"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/answer_first_question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/empty_answer_first_question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_erreur_question_2"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_3"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/answer_first_question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/empty_answer_first_question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_erreur_question_3"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                />
+
+
+
+            <TextView
+                android:id="@+id/all_question_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tous_les_champs_sont_requis"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/reset_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="50"
+                    android:text="@string/envoyer"
+                    />
+
+                <Button
+                    android:id="@+id/button_back_singin"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back"
+                    android:layout_weight="50"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/layout_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/answer_first_question1_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_2"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/answer_first_question2_entrer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_3"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/answer_first_question3_entrer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+
+
+
+            <TextView
+                android:id="@+id/erreur_questionnaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tous_les_champs_sont_requis"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/survey_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="50"
+                    android:text="@string/envoyer"
+                    />
+
+                <Button
+                    android:id="@+id/button_back_create"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back"
+                    android:layout_weight="50"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

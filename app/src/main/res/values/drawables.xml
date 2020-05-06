@@ -1,0 +1,10 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="ic_cour" type="drawable">@drawable/ic_cour</item>
+    <item name="ic_cloud_upload" type="drawable">@drawable/ic_cloud_upload</item>
+    <item name="ic_home" type="drawable">@drawable/ic_home</item>
+    <item name="ic_exercice" type="drawable">@drawable/ic_exercice</item>
+    <item name="ic_correction_exercice" type="drawable">@drawable/ic_correction_exercice</item>
+    <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
+    <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
+    <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+</resources>

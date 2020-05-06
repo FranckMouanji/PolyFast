@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cour">cours</string>
+    <string name="exercice">Exercice</string>
+    <string name="corection">essaie de correction</string>
+    <string name="nouveau">uploder un nouveau fichier</string>
+    <string name="a_propos">a propos</string>
+    <string name="information">information</string>
+    <string name="nous_contacter">nous contacter</string>
+    <string name="upload">ajouter un fichier</string>
+    <string name="app_mail">polyFast@gmail.com</string>
+    <string name="erreur_match_mot_pass">le mot de passe ou l\'adresse e-mail est incorrect</string>
+    <string name="deconnexion">Deconnexion</string>
+    <string name="oui">Oui</string>
+    <string name="message_avertissement_deconnexion">Voulez-vous vraiment vous deconnecter</string>
+    <string name="compte">Compte</string>
+    <string name="code_de_la_matiere">Matiere</string>
+    <string name="nom_du_document">Nom du document</string>
+    <string name="fili_re">Filière</string>
+    <string name="niveau">Niveau</string>
+    <string name="categorie_de_fichier">Catégorie De Fichier</string>
+    <string name="choisir_un_fichier">choisir un fichier</string>
+    <string name="pdf">.pdf</string>
+    <string name="vous_avez_oubli_le_code_de_la_matiere">vous avez oublié le code de la matiere</string>
+    <string name="vous_avez_oubli_le_nom_du_document">vous avez oublié le nom du document</string>
+    <string name="selection_fichier">Selectionner un fichier PDF</string>
+    <string name="verif_connexion">verifiez votre connexion puis reessayez</string>
+    <string name="wait">Patientez un instant</string>
+    <string name="upload_by">"uploader par "</string>
+    <string name="contenu_vide">contenu vide</string>
+    <string name="no_download">aucun téléchargement....</string>
+    <string name="select_file">Selectionner un fichier</string>
+</resources>

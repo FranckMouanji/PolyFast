@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/couleur_de_font"
+    tools:context=".Activities.DownloadedFile">
+
+    <ListView
+        android:id="@+id/list_file"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/contenu_vide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_download"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

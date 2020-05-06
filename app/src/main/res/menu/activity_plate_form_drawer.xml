@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_cour"
+            android:icon="@drawable/ic_cour"
+            android:title="@string/cour" />
+        <item
+            android:id="@+id/nav_exercice"
+            android:icon="@drawable/ic_exercice"
+            android:title="@string/exercice" />
+
+        <item
+            android:id="@+id/nav_correction_exercice"
+            android:icon="@drawable/ic_correction_exercice"
+            android:title="@string/corection" />
+
+        <item
+            android:id="@+id/nav_uplode_file"
+            android:icon="@drawable/ic_cloud_upload"
+            android:title="@string/nouveau" />
+    </group>
+
+    <item
+        android:title="@string/information"
+        >
+        <menu>
+
+            <item
+                android:id="@+id/nav_a_propos"
+                android:title="@string/a_propos"/>
+
+            <item
+                android:id="@+id/nav_nous_contacter"
+                android:title="@string/nous_contacter"/>
+
+            <item
+                android:id="@+id/nav_compte"
+                android:title="@string/compte"/>
+
+        </menu>
+
+
+    </item>
+</menu>
