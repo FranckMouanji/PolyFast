@@ -54,6 +54,12 @@
         tools:layout="@layout/upload_file_fragment" />
 
     <fragment
+        android:id="@+id/nav_forum"
+        android:name="com.example.polyfast.Activities.ui.Forum"
+        android:label="@string/forum"
+        tools:layout="@layout/forum_fragment" />
+
+    <fragment
         android:id="@+id/nav_a_propos"
         android:name="com.example.polyfast.Activities.ui.a_propos.A_ProposFragment"
         android:label="@string/a_propos"

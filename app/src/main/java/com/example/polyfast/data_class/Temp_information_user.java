@@ -7,20 +7,20 @@ public class Temp_information_user {
 
 
     private  String statut;
-    private  String etat;
+    private  String classe;
 
     public Temp_information_user(){
         this.login = null;
         this.user_name = null;
         this.statut  = null;
-        this.etat  = null;
+        this.classe  = null;
     }
 
-    public Temp_information_user(String m_login, String m_name, String m_statut, String m_etat){
+    public Temp_information_user(String m_login, String m_name, String m_statut, String m_classe){
         this.login = m_login;
         this.user_name = m_name;
         this.statut = m_statut;
-        this.etat = m_etat;
+        this.classe = m_classe;
     }
 
 
@@ -33,12 +33,12 @@ public class Temp_information_user {
         this.statut = statut;
     }
 
-    public String getEtat() {
-        return etat;
+    public String getClasse() {
+        return classe;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setClasse(String etat) {
+        this.classe = etat;
     }
 
 
