@@ -2,9 +2,14 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#FF9800</color>
+    <color name="colorAccentLight">#FFCE85</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="dark">#1B1A1A</color>
+    <color name="darkLight">#80606060</color>
     <color name="red">#FF0000</color>
     <color name="listView_content_color">#D1B67C</color>
+    <color name="colorResponse">#D37E00</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -65,4 +65,24 @@
     <string name="no_download">no downloads....</string>
     <string name="select_file">Select File</string>
     <string name="forum">Forum</string>
+    <string name="at">at</string>
+    <string name="questionDetail">Detail of the question</string>
+    <string name="responses_section">Answers to the question</string>
+    <string name="comments">Comments</string>
+    <string name="valided">Validate</string>
+    <string name="list_end">View more answers</string>
+    <string name="copy">copyright - 2020</string>
+    <string name="answer_question">Answer</string>
+    <string name="ask_question">Ask a question</string>
+    <string name="text_answer_or_question">In this section, you have possibility to answer this question above or ask another question. Using this following buttons.</string>
+    <string name="your_response">Your response.</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_your_response">Enter your response...</string>
+    <string name="close">Close</string>
+    <string name="max_character_text">The number of limit character is forecast.</string>
+    <string name="comment_concern">Comments posted on this answer.</string>
+    <string name="add_comment">Add comment</string>
+    <string name="add">Add</string>
+    <string name="new_comment">New comment</string>
+    <string name="new_question">New question</string>
 </resources>

@@ -180,4 +180,24 @@
     <string name="no_download">aucun téléchargement....</string>
     <string name="select_file">Selectionner un fichier</string>
     <string name="forum">Forum</string>
+    <string name="at">à</string>
+    <string name="questionDetail">Détail de la question</string>
+    <string name="responses_section">Réponses à la question</string>
+    <string name="comments">Commentaires</string>
+    <string name="valided">Valider</string>
+    <string name="list_end">Afficher la suite des réponses</string>
+    <string name="ask_question">Poser une question</string>
+    <string name="answer_question">Répondre</string>
+    <string name="copy">CopyRight - 2020</string>
+    <string name="your_response">Votre réponse.</string>
+    <string name="cancel">Anuller</string>
+    <string name="enter_your_response">Entrer votre réponse...</string>
+    <string name="text_answer_or_question">Dans cette rubrique, vous avez la possibilité de répondre à cette question ou d\'en poser une autre. En utilisant les boutons ci-dessous.</string>
+    <string name="max_character_text">Le numbre limite de caractère est dépacé !</string>
+    <string name="close">Fermer</string>
+    <string name="comment_concern">Commentaires postés sur cette réponse.</string>
+    <string name="add">Ajouter</string>
+    <string name="add_comment">Ajouter un commentaire</string>
+    <string name="new_comment">Nouveau commentaire</string>
+    <string name="new_question">Nouvelle question</string>
 </resources>

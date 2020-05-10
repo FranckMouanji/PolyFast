@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/list_end_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/list_end"
+        android:textAllCaps="false"
+        android:background="@drawable/button_next_bg"
+        android:drawableBottom="@drawable/ic_end"
+        android:paddingTop="5dp"
+        android:drawablePadding="-15dp"
+        android:drawableTint="@color/darkLight"
+        android:paddingHorizontal="10dp"
+        android:textSize="13sp"
+        android:textColor="@color/darkLight"
+        android:layout_gravity="center_horizontal"
+        android:elevation="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+</LinearLayout>

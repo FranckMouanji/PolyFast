@@ -3,6 +3,7 @@
     package="com.example.polyfast">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -13,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.DownloadedFile"></activity>
+        <activity android:name=".forumManager.AskQuestion"/>
+        <activity android:name=".forumManager.QuestionDetail" />
+        <activity android:name=".Activities.DownloadedFile" />
         <activity
             android:name=".Activities.PlateForm"
             android:label="@string/title_activity_plate_form"

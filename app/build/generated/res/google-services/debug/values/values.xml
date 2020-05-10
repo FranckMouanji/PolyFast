@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">393417654279-g0ed1eua7m3ee4dmspjiueki2tcc44rf.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://polyfast.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">393417654279</string>
+    <string name="google_api_key" translatable="false">AIzaSyAwHf7oflIp3JDM4ln5KBeRlIq-6GSZwjA</string>
+    <string name="google_app_id" translatable="false">1:393417654279:android:446cfaa126cd9afbb2eaa2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAwHf7oflIp3JDM4ln5KBeRlIq-6GSZwjA</string>
+    <string name="google_storage_bucket" translatable="false">polyfast.appspot.com</string>
+    <string name="project_id" translatable="false">polyfast</string>
+</resources>
