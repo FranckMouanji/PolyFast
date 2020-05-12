@@ -84,7 +84,7 @@
             android:id="@+id/response_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_responses"
+            android:drawableEnd="@drawable/ic_responses"
             android:drawablePadding="5dp"
             android:drawableTint="@color/colorResponse"
             android:ellipsize="end"
@@ -92,7 +92,8 @@
             android:textColor="@color/colorResponse"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/class_name"
-            app:layout_constraintTop_toBottomOf="@+id/class_name" />
+            app:layout_constraintTop_toBottomOf="@+id/class_name"
+            tools:ignore="UnusedAttribute" />
 
         <TextView
             android:id="@+id/class_name"
@@ -109,7 +110,7 @@
             android:id="@+id/user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_push"
+            android:drawableStart="@drawable/ic_push"
             android:drawablePadding="-5dp"
             android:drawableTint="@color/colorPrimary"
             android:ellipsize="end"
@@ -119,7 +120,8 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/avatar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar"/>
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            tools:ignore="UnusedAttribute" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

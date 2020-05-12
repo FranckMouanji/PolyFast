@@ -44,19 +44,9 @@ public class ActionAboutFile {
         return ActionAboutFile.getFileCollection().add(fileUploaded);
     }
 
-
-
-
-
-
-
-
-
-
    //normal student
     public static Task<QuerySnapshot> getParticularFile(String level, String filiere, String categorie){
         return ActionAboutFile.getFileCollection()
-                .whereEqualTo(NIVEAU, level)
                 .whereEqualTo(FILIERE, filiere)
                 .whereEqualTo(CATEGORIE, categorie)
                 .get();
@@ -64,7 +54,6 @@ public class ActionAboutFile {
 
     public static Task<QuerySnapshot> getAllFile(String level, String filiere){
         return ActionAboutFile.getFileCollection()
-                .whereEqualTo(NIVEAU, level)
                 .whereEqualTo(FILIERE, filiere)
                 .get();
     }

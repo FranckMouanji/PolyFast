@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/couleur_de_font"
-    tools:context=".Activities.ui.correction_exercice.Correction_exerciceFragment">
+    tools:context=".fragment.correction_exercice.Correction_exerciceFragment">
 
     <ListView
         android:id="@+id/list_pdf_total"

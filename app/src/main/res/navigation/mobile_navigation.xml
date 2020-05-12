@@ -7,73 +7,73 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.polyfast.Activities.ui.home.HomeFragment"
+        android:name="com.example.polyfast.fragment.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
+<!--        <action-->
+<!--            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"-->
+<!--            app:destination="@id/nav_home_second" />-->
     </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.example.polyfast.Activities.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_home_second"-->
+<!--        android:name="com.example.polyfast.fragment.home.HomeSecondFragment"-->
+<!--        android:label="@string/home_second"-->
+<!--        tools:layout="@layout/fragment_home_second">-->
+<!--        <action-->
+<!--            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"-->
+<!--            app:destination="@id/nav_home" />-->
 
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
+<!--        <argument-->
+<!--            android:name="myArg"-->
+<!--            app:argType="string" />-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/nav_cour"
-        android:name="com.example.polyfast.Activities.ui.Cours.CourFragment"
+        android:name="com.example.polyfast.fragment.Cours.CourFragment"
         android:label="@string/cour"
         tools:layout="@layout/fragment_cour" />
 
     <fragment
         android:id="@+id/nav_exercice"
-        android:name="com.example.polyfast.Activities.ui.Exercices.ExercicesFragment"
+        android:name="com.example.polyfast.fragment.Exercices.ExercicesFragment"
         android:label="@string/exercice"
         tools:layout="@layout/fragment_exercices" />
 
     <fragment
         android:id="@+id/nav_correction_exercice"
-        android:name="com.example.polyfast.Activities.ui.correction_exercice.Correction_exerciceFragment"
+        android:name="com.example.polyfast.fragment.correction_exercice.Correction_exerciceFragment"
         android:label="@string/corection"
         tools:layout="@layout/correction_exercice_fragment" />
 
     <fragment
         android:id="@+id/nav_uplode_file"
-        android:name="com.example.polyfast.Activities.ui.upload_file.upload_fileFragment"
+        android:name="com.example.polyfast.fragment.upload_file.upload_fileFragment"
         android:label="@string/upload"
         tools:layout="@layout/upload_file_fragment" />
 
     <fragment
         android:id="@+id/nav_forum"
-        android:name="com.example.polyfast.Activities.ui.Forum"
+        android:name="com.example.polyfast.fragment.Forum"
         android:label="@string/forum"
         tools:layout="@layout/forum_fragment" />
 
     <fragment
         android:id="@+id/nav_a_propos"
-        android:name="com.example.polyfast.Activities.ui.a_propos.A_ProposFragment"
+        android:name="com.example.polyfast.fragment.a_propos.A_ProposFragment"
         android:label="@string/a_propos"
         tools:layout="@layout/a__propos_fragment" />
 
     <fragment
         android:id="@+id/nav_nous_contacter"
-        android:name="com.example.polyfast.Activities.ui.Nous_Contacter.Nous_ContacterFragment"
+        android:name="com.example.polyfast.fragment.Nous_Contacter.Nous_ContacterFragment"
         android:label="@string/nous_contacter"
         tools:layout="@layout/nous__contacter_fragment" />
 
     <fragment
         android:id="@+id/nav_compte"
-        android:name="com.example.polyfast.Activities.ui.Compte.CompteFragment"
+        android:name="com.example.polyfast.fragment.Compte.CompteFragment"
         android:label="@string/compte"
         tools:layout="@layout/compte_fragment"/>
 </navigation>

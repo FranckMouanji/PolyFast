@@ -1423,6 +1423,7 @@ drawable btn_radio_on_to_off_mtrl_animation
 drawable button_add_comment_bg
 drawable button_close_bottom_sheet_bg
 drawable button_commented_bg
+drawable button_deleted_image_bg
 drawable button_next_bg
 drawable button_primary_bg
 drawable button_primary_ripple_bg
@@ -1454,6 +1455,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable download
+drawable edit_description_image_bg
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_account
@@ -1469,6 +1471,7 @@ drawable ic_commented
 drawable ic_correction_exercice
 drawable ic_cour
 drawable ic_date
+drawable ic_deleted_image
 drawable ic_edit_black_24dp
 drawable ic_end
 drawable ic_error
@@ -1564,8 +1567,6 @@ id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
 id action0
-id action_HomeFragment_to_HomeSecondFragment
-id action_HomeSecondFragment_to_HomeFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -1658,12 +1659,16 @@ id confirm_button
 id confirm_password_change
 id confirm_password_create
 id container
+id container_btn_chose_image
+id container_image1
+id container_image2
 id content
 id contentImage1
 id contentImage2
 id contentPanel
 id contenu_vide
 id coordinator
+id copy
 id create_account
 id custom
 id customPanel
@@ -1673,6 +1678,10 @@ id date_picker_actions
 id deconnexion
 id decor_content_parent
 id default_activity_button
+id deleted_image
+id deleted_image1
+id deleted_image2
+id description_question
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1709,6 +1718,8 @@ id error_caracter_of_password
 id error_caracter_of_password_change
 id error_create_mail
 id error_create_password
+id error_image_description1
+id error_image_description2
 id error_login_mail
 id error_mail_or_password
 id error_match_password
@@ -1750,10 +1761,16 @@ id imageDescription
 id imageDescription1
 id imageDescription2
 id imageView
+id imageView1
+id imageView2
+id image_description1
+id image_description2
+id image_response
 id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id label_question
 id labeled
 id largeLabel
 id last_author
@@ -1826,7 +1843,6 @@ id nav_cour
 id nav_exercice
 id nav_forum
 id nav_home
-id nav_home_second
 id nav_host_fragment
 id nav_host_fragment_container
 id nav_nous_contacter
@@ -1850,6 +1866,8 @@ id notification_main_column_container
 id off
 id on
 id outline
+id outline_description_question
+id outline_label_question
 id outlinedTextField
 id packed
 id parallax
@@ -1863,6 +1881,7 @@ id password_toggle
 id peekHeight
 id percent
 id pin
+id posted_btn
 id prof
 id prof_information
 id progress_circular
@@ -1954,6 +1973,8 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView2
+id textViewLabel1
+id textViewLabel2
 id text_input_end_icon
 id text_input_start_icon
 id text_set_response
@@ -2214,6 +2235,7 @@ string chevauche
 string chip_text
 string choisir_un_fichier
 string choisir_un_tat
+string chose_an_app_image
 string clear_text_end_icon_content_description
 string close
 string code_de_la_matiere
@@ -2245,6 +2267,7 @@ string corection
 string cour
 string deconnexion
 string default_web_client_id
+string description_not_empty
 string e_mail
 string enter_your_response
 string entrer_votre_adresse_mail
@@ -2272,6 +2295,7 @@ string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string home_second
 string icon_content_description
+string image_description
 string information
 string list_end
 string max_character_text
@@ -2339,6 +2363,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string pdf
+string posted
 string prenom
 string professeur
 string project_id
@@ -2346,6 +2371,8 @@ string questionDetail
 string question_1
 string question_2
 string question_3
+string question_description
+string question_label
 string responses_section
 string reussi
 string search_menu_title
@@ -2359,6 +2386,7 @@ string text_erreur_question_2
 string text_erreur_question_3
 string text_filiere
 string text_niveau
+string text_too_long
 string title_activity_main2
 string title_activity_plate_form
 string tous_les_champs_sont_requis

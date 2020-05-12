@@ -4,8 +4,6 @@ public class Temp_information_user {
 
     private  String login;
     private  String user_name;
-
-
     private  String statut;
     private  String classe;
 

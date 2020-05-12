@@ -200,4 +200,12 @@
     <string name="add_comment">Ajouter un commentaire</string>
     <string name="new_comment">Nouveau commentaire</string>
     <string name="new_question">Nouvelle question</string>
+    <string name="posted">Poster</string>
+    <string name="question_label">Label de la question</string>
+    <string name="question_description">Description de la question</string>
+    <string name="description_not_empty">Le champ ne doit pas être vide.</string>
+    <string name="image_description">Description de l\'image</string>
+    <string name="text_too_long">La longueure maximale du text est dépacée.</string>
+    <string name="chose_an_app_image">Choisir une application pour selectionner une image.</string>
+
 </resources>

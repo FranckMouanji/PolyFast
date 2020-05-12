@@ -583,11 +583,10 @@ class MonAdapter extends ArrayAdapter<String>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater)context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert layoutInflater != null;
         View view = layoutInflater.inflate(R.layout.listview_content, parent, false);
         TextView nom_fichier_present = view.findViewById(R.id.nom_fichier);
         TextView  nom_expediteur_present = view.findViewById(R.id.nom_expediteur);
-
-
 
         nom_fichier_present.setText(code_matiere[position]+"  "+nom_fichier[position]);
         nom_expediteur_present.setText(context.getResources().getString(R.string.upload_by)+" "+expediteur[position]);

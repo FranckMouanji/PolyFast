@@ -9,15 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.example.polyfast.Activities.PlateForm;
 import com.example.polyfast.R;
 import com.example.polyfast.data_class.Answer;
 import com.example.polyfast.data_class.File_uploaded;
 import com.example.polyfast.data_class.Users;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.polyfast.forumManager.utils.Utils;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -51,88 +48,75 @@ public class ActionAboutUsers {
         progressDialog.setTitle(context.getResources().getString(R.string.wait));
         progressDialog.show();
         String e_mail = users.getEmail();
-        ActionAboutUsers.getParticularUser(e_mail).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                boolean exist = false;
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    Users user = documentSnapshot.toObject(Users.class);
-                    String recupE_mail = user.getEmail();
-                    if (recupE_mail.equals(users.getEmail())) {
-                        exist = true;
-                    }
-                }
-                if (exist) {
-                    Toast.makeText(context, context.getResources().getString(R.string.user_exist), Toast.LENGTH_SHORT).show();
-                } else {
-                    addUser(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            ActionAboutAnswerOfQuestion.addAnswer(answer);
-                            ActionAboutAnswerOfQuestion.addAnswer(answer1);
-                            ActionAboutAnswerOfQuestion.addAnswer(answer2);
-                            Controller.create_file(users, context);
-                            progressDialog.dismiss();
-                            Intent intent = new Intent(context, PlateForm.class);
-                            context.startActivity(intent);
-                            ((Activity)context).finish();
-                        }
-                    });
+        ActionAboutUsers.getParticularUser(e_mail).addOnSuccessListener(queryDocumentSnapshots -> {
+            boolean exist = false;
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                Users user = documentSnapshot.toObject(Users.class);
+                String recupE_mail = user.getEmail();
+                if (recupE_mail.equals(users.getEmail())) {
+                    exist = true;
                 }
             }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
-                    }
+            if (exist) {
+                Toast.makeText(context, context.getResources().getString(R.string.user_exist), Toast.LENGTH_SHORT).show();
+            } else {
+                addUser(users).addOnSuccessListener(documentReference -> {
+                    ActionAboutAnswerOfQuestion.addAnswer(answer);
+                    ActionAboutAnswerOfQuestion.addAnswer(answer1);
+                    ActionAboutAnswerOfQuestion.addAnswer(answer2);
+                    Controller.create_file(users, context);
+                    progressDialog.dismiss();
+                    Intent intent = new Intent(context, PlateForm.class);
+                    context.startActivity(intent);
+
+                    Utils.addUser(users); // Add user in particular collection.
+
+                    ((Activity)context).finish();
                 });
-
-
+            }
+        })
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
+                });
 
 
     }
 
 
 
-    public static void singUsers(final Context context, String mail, final String password, final TextView textView){
+    public static void singUsers(final Context context, String mail, final String password,
+                                 final TextView textView){
 
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle(context.getResources().getString(R.string.wait));
         progressDialog.show();
-        ActionAboutUsers.getParticularUser(mail).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String password_recup = "";
-                Users users = null;
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    users  = documentSnapshot.toObject(Users.class);
-                    password_recup = users.getPassword();
-                }
-                progressDialog.dismiss();
-                if (! password_recup.equals("")){
-                    if (!(password_recup.equals(password))){
-                        textView.setVisibility(View.VISIBLE);
-                    }else {
-                        if (textView.getVisibility() == View.VISIBLE){
-                            textView.setVisibility(View.GONE);
-                        }
-
-                        Controller.create_file(users, context);
-                        Intent intent = new Intent(context, PlateForm.class);
-                        context.startActivity(intent);
-                        ((Activity)context).finish();
+        ActionAboutUsers.getParticularUser(mail).addOnSuccessListener(queryDocumentSnapshots -> {
+            String password_recup = "";
+            Users users = null;
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                users  = documentSnapshot.toObject(Users.class);
+                password_recup = users.getPassword();
+            }
+            progressDialog.dismiss();
+            if (! password_recup.equals("")){
+                if (!(password_recup.equals(password))){
+                    textView.setVisibility(View.VISIBLE);
+                }else {
+                    if (textView.getVisibility() == View.VISIBLE){
+                        textView.setVisibility(View.GONE);
                     }
+
+                    Controller.create_file(users, context);
+                    Intent intent = new Intent(context, PlateForm.class);
+                    context.startActivity(intent);
+                    ((Activity)context).finish();
                 }
             }
         })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
-                    }
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -141,63 +125,57 @@ public class ActionAboutUsers {
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle(context.getResources().getString(R.string.wait));
         progressDialog.show();
-        ActionAboutUsers.getParticularUser(mail).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                Users users=null;
-                String id = null;
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                   id = documentSnapshot.getId();
-                   users = documentSnapshot.toObject(Users.class);
-                }
-                progressDialog.dismiss();
-                assert id != null;
-                ActionAboutUsers.getUsersCollection().document(id).update("password", password);
-                Toast.makeText(context, R.string.reussi, Toast.LENGTH_SHORT).show();
-                users.setPassword(password);
-                Controller.create_file(users, context);
-                Intent intent = new Intent(context, PlateForm.class);
-                context.startActivity(intent);
-                ((Activity)context).finish();
+        ActionAboutUsers.getParticularUser(mail).addOnSuccessListener(queryDocumentSnapshots -> {
+            Users users=null;
+            String id = null;
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+               id = documentSnapshot.getId();
+               users = documentSnapshot.toObject(Users.class);
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                progressDialog.dismiss();
-                Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
-            }
+            progressDialog.dismiss();
+            assert id != null;
+            ActionAboutUsers.getUsersCollection().document(id).update("password", password);
+            Toast.makeText(context, R.string.reussi, Toast.LENGTH_SHORT).show();
+            users.setPassword(password);
+
+            Controller.create_file(users, context);
+            Intent intent = new Intent(context, PlateForm.class);
+            context.startActivity(intent);
+
+            Utils.updateUser(users); // Update the particular collection.
+
+            ((Activity)context).finish();
+        }).addOnFailureListener(e -> {
+            progressDialog.dismiss();
+            Toast.makeText(context, context.getResources().getString(R.string.verif_connexion), Toast.LENGTH_SHORT).show();
         });
     }
 
 
     public static void completeInformationTeacher(Context context, File_uploaded file_uploaded, Uri data){
         String mail = file_uploaded.getSenderMail();
-        getParticularUser(mail).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                Users users = null;
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    users = documentSnapshot.toObject(Users.class);
-                }
-                file_uploaded.setStudyName(users.getMatiere_enseigner());
-                ActionAboutFile.setFile(context, file_uploaded, data);
+        getParticularUser(mail).addOnSuccessListener(queryDocumentSnapshots -> {
+            Users users = null;
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                users = documentSnapshot.toObject(Users.class);
             }
+            assert users != null;
+            file_uploaded.setStudyName(users.getMatiere_enseigner());
+            ActionAboutFile.setFile(context, file_uploaded, data);
         });
     }
 
 
     public static void completeInformationUser(Context context, File_uploaded fileUploaded, Uri data){
         String mail = fileUploaded.getSenderMail();
-        getParticularUser(mail).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                Users users = null;
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    users = documentSnapshot.toObject(Users.class);
-                }
-                fileUploaded.setFiliere(users.getClasse());
-                ActionAboutFile.setFile(context, fileUploaded, data);
+        getParticularUser(mail).addOnSuccessListener(queryDocumentSnapshots -> {
+            Users users = null;
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                users = documentSnapshot.toObject(Users.class);
             }
+            assert users != null;
+            fileUploaded.setFiliere(users.getClasse());
+            ActionAboutFile.setFile(context, fileUploaded, data);
         });
     }
 

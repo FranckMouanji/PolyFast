@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Date;
 
-public class ForumQuestion {
+public class ForumQuestion extends ForumModelsFactory {
 
    private String id;
    private String label;
@@ -16,15 +16,18 @@ public class ForumQuestion {
    private String imageDescription1;
    private String image2;
    private String imageDescription2;
-   private int responseNum;
+   private int responseCount;
    private String authorId;
+   private String lastAnswerAuthorId;
+   private Date lastAnswerDate;
 
    public ForumQuestion() {
    }
 
    public ForumQuestion(String id, String label, String description, String material,
                         String className, Date pushDate, String image1, String imageDescription1,
-                        String image2, String imageDescription2, int responseNum, String authorId) {
+                        String image2, String imageDescription2, int responseCount, String authorId,
+                        String lastAnswerAuthorId, Date lastAnswerDate) {
       this.id = id;
       this.label = label;
       this.description = description;
@@ -35,8 +38,10 @@ public class ForumQuestion {
       this.imageDescription1 = imageDescription1;
       this.image2 = image2;
       this.imageDescription2 = imageDescription2;
-      this.responseNum = responseNum;
+      this.responseCount = responseCount;
       this.authorId = authorId;
+      this.lastAnswerAuthorId = lastAnswerAuthorId;
+      this.lastAnswerDate = lastAnswerDate;
    }
 
    public String getId() {
@@ -119,12 +124,12 @@ public class ForumQuestion {
       this.imageDescription2 = imageDescription2;
    }
 
-   public int getResponseNum () {
-      return responseNum;
+   public int getResponseCount () {
+      return responseCount;
    }
 
-   public void setResponseNum (int responseNum) {
-      this.responseNum = responseNum;
+   public void setResponseCount (int responseCount) {
+      this.responseCount = responseCount;
    }
 
    public String getAuthorId() {
@@ -133,6 +138,22 @@ public class ForumQuestion {
 
    public void setAuthorId(String authorId) {
       this.authorId = authorId;
+   }
+
+   public String getLastAnswerAuthorId () {
+      return lastAnswerAuthorId;
+   }
+
+   public void setLastAnswerAuthorId (String lastAnswerAuthorId) {
+      this.lastAnswerAuthorId = lastAnswerAuthorId;
+   }
+
+   public Date getLastAnswerDate () {
+      return lastAnswerDate;
+   }
+
+   public void setLastAnswerDate (Date lastAnswerDate) {
+      this.lastAnswerDate = lastAnswerDate;
    }
 
    @NonNull
@@ -150,6 +171,8 @@ public class ForumQuestion {
             ", image2='" + image2 + '\'' +
             ", imageDescription2='" + imageDescription2 + '\'' +
             ", authorId='" + authorId + '\'' +
+            ", lastAnswerAuthorId='" + lastAnswerAuthorId + '\'' +
+            ", lastAnswerDate='" + lastAnswerDate + '\'' +
             '}';
    }
 }

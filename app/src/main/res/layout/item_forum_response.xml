@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:strokeColor="@color/darkLight"
@@ -80,12 +81,13 @@
             android:layout_marginTop="10dp"
             android:textSize="16sp"
             android:text="50 personnes ont commentés cette réponse."
-            android:drawableLeft="@drawable/ic_responses"
+            android:drawableStart="@drawable/ic_responses"
             android:drawableTint="@color/dark"
             android:paddingHorizontal="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageDescription"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UnusedAttribute" />
 
         <View
             android:id="@+id/view3"
@@ -118,7 +120,7 @@
             android:textSize="23sp"
             android:gravity="center"
             android:drawablePadding="5dp"
-            android:drawableRight="@drawable/ic_validated"
+            android:drawableEnd="@drawable/ic_validated"
             android:textStyle="bold"
             android:textColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +133,8 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3">
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,7 +152,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_commented_bg"
-                    android:drawableLeft="@drawable/ic_commented"
+                    android:drawableStart="@drawable/ic_commented"
                     android:drawableTint="@color/dark"
                     android:elevation="6dp"
                     android:ellipsize="end"
@@ -160,7 +163,8 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/comment_count" />
+                    app:layout_constraintTop_toBottomOf="@+id/comment_count"
+                    tools:ignore="UnusedAttribute" />
             </LinearLayout>
 
             <LinearLayout
@@ -179,7 +183,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/button_validate_bg"
-                    android:drawableLeft="@drawable/ic_validated"
+                    android:drawableStart="@drawable/ic_validated"
                     android:drawableTint="@color/dark"
                     android:elevation="6dp"
                     android:paddingHorizontal="15dp"
@@ -190,7 +194,8 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="25sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/comment_count" />
+                    app:layout_constraintTop_toBottomOf="@+id/comment_count"
+                    tools:ignore="UnusedAttribute" />
             </LinearLayout>
 
         </LinearLayout>

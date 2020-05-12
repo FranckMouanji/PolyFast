@@ -1,21 +1,23 @@
 package com.example.polyfast.forumManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.polyfast.Activities.ui.Forum;
+import com.example.polyfast.fragment.Forum;
 import com.example.polyfast.R;
-import com.example.polyfast.forumManager.bottomSheets.BottomSheetComments;
-import com.example.polyfast.forumManager.bottomSheets.BottomSheetResponse;
-import com.example.polyfast.forumManager.models.ResponseForum;
+import com.example.polyfast.forumManager.components.BottomSheetComments;
+import com.example.polyfast.forumManager.components.BottomSheetResponse;
+import com.example.polyfast.forumManager.models.ForumModelsFactory;
+import com.example.polyfast.forumManager.models.ForumResponse;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class QuestionDetail extends AppCompatActivity implements BottomSheetResp
 
    private String question_id;
    private ForumAdapter adapter;
-   private List<ResponseForum> responses;
+   private List<ForumModelsFactory> responses;
    BottomSheetResponse bottomSheetResponse = new BottomSheetResponse();
    BottomSheetComments bottomSheetComments = new BottomSheetComments();
 
@@ -101,18 +103,18 @@ public class QuestionDetail extends AppCompatActivity implements BottomSheetResp
     * Function to set the list of the response.
     */
    private void setListOfResponse() {
-      responses.add(new ResponseForum("question", null, null,
-            null, null, question_id));
+      responses.add(new ForumResponse("question", null, null,
+            null, null, question_id, 0, 0));
 
-      responses.add(new ResponseForum("response", null, null,
-            null, null, question_id));
-      responses.add(new ResponseForum("response", null, null,
-            null, null, question_id));
+      responses.add(new ForumResponse("response", null, null,
+            null, null, question_id, 0, 0));
+      responses.add(new ForumResponse("response", null, null,
+            null, null, question_id, 0, 0));
 
-      responses.add(new ResponseForum("next_element", null, null,
-            null, null, question_id));
-      responses.add(new ResponseForum("buttons", null, null,
-            null, null, question_id));
+      responses.add(new ForumResponse("next_element", null, null,
+            null, null, question_id, 0, 0));
+      responses.add(new ForumResponse("buttons", null, null,
+            null, null, question_id, 0, 0));
 
       adapter.notifyDataSetChanged();
    }
@@ -124,11 +126,12 @@ public class QuestionDetail extends AppCompatActivity implements BottomSheetResp
    }
 
    @Override
-   public void onButtonClicked(String text) {
+   public void onButtonClicked(String text, @Nullable Bitmap image) {
 
       // Todo managed this part and send the response user.
 
-      Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, "text : "+ text + " ; image : " + image, Toast.LENGTH_SHORT).show();
+
    }
 
 }

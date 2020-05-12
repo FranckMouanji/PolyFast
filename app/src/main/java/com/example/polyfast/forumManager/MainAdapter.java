@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.polyfast.R;
-import com.example.polyfast.forumManager.comomn.Utils;
+import com.example.polyfast.forumManager.utils.Utils;
 import com.example.polyfast.forumManager.models.ForumQuestion;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       holder.label.setText(forumQuestion.getLabel());
       holder.description.setText(forumQuestion.getDescription());
       holder.class_name.setText(forumQuestion.getClassName());
-      String responseNum = "" + forumQuestion.getResponseNum();
+      String responseNum = "" + forumQuestion.getResponseCount();
       holder.response_number.setText(responseNum);
       holder.material.setText(forumQuestion.getMaterial());
       holder.user_name.setText("Ronald Tchuekou"); // TODO Set the user name.

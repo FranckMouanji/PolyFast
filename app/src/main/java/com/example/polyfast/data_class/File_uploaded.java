@@ -91,5 +91,9 @@ public class File_uploaded {
         this.filePathInFirebase = filePathInFirebase;
     }
 
+    public boolean equal (File_uploaded file_uploaded) {
+        return this.fileName.equals(file_uploaded.getFileName()) &&
+              this.filePathInFirebase.equals(file_uploaded.getFilePathInFirebase());
+    }
 
 }

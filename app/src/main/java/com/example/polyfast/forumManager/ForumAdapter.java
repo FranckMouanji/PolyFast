@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.polyfast.R;
-import com.example.polyfast.forumManager.models.ResponseForum;
+import com.example.polyfast.forumManager.models.ForumModelsFactory;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -30,15 +30,15 @@ public class ForumAdapter extends RecyclerView.Adapter {
    private static final int COMMENT_RESPONSE = 4;
 
    // Fields.
-   private List<ResponseForum> responseForums;
+   private List<ForumModelsFactory> forumResponses;
 
    // Listener.
    private OnButtonsLastItemClickListener buttonsLastItemClickListener;
    private OnResponseItemButtonClickListener responseItemButtonClickListener;
    private OnNextElementButtonClickListener nextElementButtonClickListener;
 
-   public ForumAdapter(List<ResponseForum> responseForums) {
-      this.responseForums = responseForums;
+   public ForumAdapter(List<ForumModelsFactory> forumResponses) {
+      this.forumResponses = forumResponses;
    }
 
    // ************************* Interfaces to managed the click listener.
@@ -107,12 +107,12 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
    @Override
    public int getItemCount() {
-      return responseForums.size();
+      return forumResponses.size();
    }
 
    @Override
    public int getItemViewType(int position) {
-      ResponseForum response = responseForums.get(position);
+      ForumModelsFactory response = forumResponses.get(position);
       switch (response.getId()) {
          case "question":
             return QUESTION_ITEM;
