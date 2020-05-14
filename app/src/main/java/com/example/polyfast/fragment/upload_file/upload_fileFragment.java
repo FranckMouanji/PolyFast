@@ -94,15 +94,11 @@ public class upload_fileFragment extends Fragment {
         //fonction de travail sur les vues
 
         //teacher
-        choose_pdf_teacher.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("application/pdf");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.selection_fichier)), 1);
-            }
+        choose_pdf_teacher.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setType("application/pdf");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.selection_fichier)), 1);
         });
 
         choix_niveau.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -152,86 +148,74 @@ public class upload_fileFragment extends Fragment {
             }
         });
 
+        send_teacher.setOnClickListener(v -> {
+            String nom_document = String.valueOf(nom_fichier_teacher.getText());
+            String classe = null;
+            String niveau = String.valueOf(choix_niveau.getSelectedItem());
+            String categorie = String.valueOf(choix_categorie.getSelectedItem());
+            if (niveau.equals("6eme")){
+                classe = classe_6eme.getSelectedItem().toString();
+            }
+            if (niveau.equals("5eme")){
+                classe = classe_5eme.getSelectedItem().toString();
+            }
+            if (niveau.equals("4eme")){
+                classe = classe_4eme.getSelectedItem().toString();
+            }
+            if (niveau.equals("3eme")){
+                classe = classe_3eme.getSelectedItem().toString();
+            }
+            if (niveau.equals("2nd")){
+                classe = classe_2nd.getSelectedItem().toString();
+            }
+            if (niveau.equals("1ere")){
+                classe = classe_1ere.getSelectedItem().toString();
+            }
+            if (niveau.equals("Tle")){
+                classe = classe_Tle.getSelectedItem().toString();
+            }
 
-
-
-        send_teacher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nom_document = String.valueOf(nom_fichier_teacher.getText());
-                String classe = null;
-                String niveau = String.valueOf(choix_niveau.getSelectedItem());
-                String categorie = String.valueOf(choix_categorie.getSelectedItem());
-                if (niveau.equals("6eme")){
-                    classe = classe_6eme.getSelectedItem().toString();
-                }
-                if (niveau.equals("5eme")){
-                    classe = classe_5eme.getSelectedItem().toString();
-                }
-                if (niveau.equals("4eme")){
-                    classe = classe_4eme.getSelectedItem().toString();
-                }
-                if (niveau.equals("3eme")){
-                    classe = classe_3eme.getSelectedItem().toString();
-                }
-                if (niveau.equals("2nd")){
-                    classe = classe_2nd.getSelectedItem().toString();
-                }
-                if (niveau.equals("1ere")){
-                    classe = classe_1ere.getSelectedItem().toString();
-                }
-                if (niveau.equals("Tle")){
-                    classe = classe_Tle.getSelectedItem().toString();
-                }
-
-                if (nom_document.equals("")){
+            if (nom_document.equals("")){
+                empty_nom_document_teacher.setVisibility(View.VISIBLE);
+            }else {
+                if (empty_nom_document_teacher.getVisibility() == View.VISIBLE){
                     empty_nom_document_teacher.setVisibility(View.VISIBLE);
-                }else {
-                    if (empty_nom_document_teacher.getVisibility() == View.VISIBLE){
-                        empty_nom_document_teacher.setVisibility(View.VISIBLE);
-                    }
                 }
+            }
 
-                if (empty_nom_document_teacher.getVisibility() == View.GONE && file!=null){
-                    String nom_classe = niveau + classe;
+            if (empty_nom_document_teacher.getVisibility() == View.GONE && file!=null){
+                String nom_classe = niveau + classe;
 
-                    File_uploaded file_uploaded = new File_uploaded(nom_document, null, login_user, nom_user, categorie, nom_classe, null);
-                    ActionAboutUsers.completeInformationTeacher(getContext(), file_uploaded, file);
-                }
+                File_uploaded file_uploaded = new File_uploaded(nom_document, null, login_user, nom_user, categorie, nom_classe, null);
+                ActionAboutUsers.completeInformationTeacher(getContext(), file_uploaded, file);
             }
         });
 
         //normal student
-        choose_pdf_normal_student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("application/pdf");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.selection_fichier)), 1);
-            }
+        choose_pdf_normal_student.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setType("application/pdf");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.selection_fichier)), 1);
         });
 
 
-        send_normal_student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code_matiere = String.valueOf(nom_matiere_normal_student.getSelectedItem());
-                String nom_document = String.valueOf(nom_fichier_normal_student.getText());
-                String categorie = String.valueOf(choix_categorie_normal_student.getSelectedItem());
+        send_normal_student.setOnClickListener(v -> {
+            String code_matiere = String.valueOf(nom_matiere_normal_student.getSelectedItem());
+            String nom_document = String.valueOf(nom_fichier_normal_student.getText());
+            String categorie = String.valueOf(choix_categorie_normal_student.getSelectedItem());
 
 
-                if (nom_document.equals("")){
+            if (nom_document.equals("")){
+                empty_nom_document_normal_student.setVisibility(View.VISIBLE);
+            }else {
+                if (empty_nom_document_normal_student.getVisibility() == View.VISIBLE){
                     empty_nom_document_normal_student.setVisibility(View.VISIBLE);
-                }else {
-                    if (empty_nom_document_normal_student.getVisibility() == View.VISIBLE){
-                        empty_nom_document_normal_student.setVisibility(View.VISIBLE);
-                    }
                 }
-                if (empty_nom_document_normal_student.getVisibility() == View.GONE && file != null){
-                    File_uploaded file_uploaded = new File_uploaded(nom_document, code_matiere, login_user, nom_user, categorie, null, null);
-                    ActionAboutUsers.completeInformationUser(getContext(), file_uploaded, file);
-                }
+            }
+            if (empty_nom_document_normal_student.getVisibility() == View.GONE && file != null){
+                File_uploaded file_uploaded = new File_uploaded(nom_document, code_matiere, login_user, nom_user, categorie, null, null);
+                ActionAboutUsers.completeInformationUser(getContext(), file_uploaded, file);
             }
         });
 

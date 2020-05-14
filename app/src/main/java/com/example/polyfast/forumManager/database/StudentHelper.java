@@ -3,8 +3,10 @@ package com.example.polyfast.forumManager.database;
 import com.example.polyfast.forumManager.models.Student;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,11 +36,19 @@ public class StudentHelper {
    }
 
    /**
+    * Function to get the student by e-mail address.
+    * @param mail mail address.
+    */
+   public static Task<QuerySnapshot> getStudentByMail (String mail) {
+      return getCollectionReference().whereEqualTo("email", mail).get();
+   }
+
+   /**
     * Function to add a student to the data base.
     * @param student New student.
     */
-   public static void addStudent(Student student) {
-      getCollectionReference().add(student);
+   public static Task<DocumentReference> addStudent(Student student) {
+      return getCollectionReference().add(student);
    }
 
    /**
@@ -46,14 +56,14 @@ public class StudentHelper {
     * @param mail Student mail.
     * @param password Student Pass.
     */
-   public static void updateStudent (String mail, String password) {
+   public static Task<QuerySnapshot> updateStudent (String mail, String password) {
 
       Map<String, Object> studentMap = new HashMap<>();
 
       studentMap.put("email", mail);
       studentMap.put("password", password);
 
-      getCollectionReference().whereEqualTo("email", mail).get()
+      return getCollectionReference().whereEqualTo("email", mail).get()
             .addOnCompleteListener(command -> {
                if (command.isSuccessful())
                   getCollectionReference().document(
@@ -63,14 +73,6 @@ public class StudentHelper {
                   ).update(studentMap);
             });
 
-   }
-
-   /**
-    * Function to deleted a student to the data base.
-    * @param studentId Student id.
-    */
-   public static Task<Void> deletedStudent (String studentId) {
-      return getCollectionReference().document(studentId).delete();
    }
 
 }

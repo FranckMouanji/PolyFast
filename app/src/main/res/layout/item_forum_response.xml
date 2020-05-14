@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Ronald Tchuekou"
             android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toTopOf="@+id/avatar" />
@@ -48,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Lundi 20 Mai 2020 à 10:13"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toBottomOf="@+id/comment_author" />
@@ -59,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="17sp"
-            android:text="If you Command + Click (or Control + Click) the string resource name, or open app -> res -> values -> strings.xml, you can see the strings.xml file where string resources are defined. When more string resources are added in the future, they will be defined here. Every resource in this file should have a shr_ prefix to denote that they are part of the Shrine app."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/avatar" />
@@ -69,24 +67,27 @@
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_marginTop="8dp"
+            android:transitionName="image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/comment_text"
-            app:srcCompat="@drawable/side_nav_bar"/>
+            app:srcCompat="@drawable/side_nav_bar"
+            android:contentDescription="@string/image_description"
+            tools:ignore="UnusedAttribute" />
 
         <TextView
             android:id="@+id/comment_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:text="50 personnes ont commentés cette réponse."
             android:drawableStart="@drawable/ic_responses"
             android:drawableTint="@color/dark"
             android:paddingHorizontal="10dp"
+            android:textColor="#D3BD6E"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageDescription"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageDescription"
             tools:ignore="UnusedAttribute" />
 
         <View
@@ -103,10 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:text="reponse 1/3"
+            android:layout_marginEnd="8dp"
             android:textColor="@color/colorAccent"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,15 +114,14 @@
             android:id="@+id/like_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="16dp"
-            android:text="50"
-            android:textSize="23sp"
-            android:gravity="center"
-            android:drawablePadding="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:drawableEnd="@drawable/ic_validated"
-            android:textStyle="bold"
+            android:drawablePadding="5dp"
+            android:gravity="center"
             android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/response_paginate" />
 

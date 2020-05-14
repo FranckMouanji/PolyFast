@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
-        android:text="New to Material Design? Get started with this introduction to our guidelines."
         android:textColor="@color/dark"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -31,15 +30,15 @@
 
         <TextView
             android:id="@+id/push_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_date"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="Lundi 20 Avril 2020 à 13:14"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/push_author"
             app:layout_constraintTop_toTopOf="@+id/push_author" />
 
@@ -50,7 +49,8 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_account" />
+            app:srcCompat="@drawable/ic_account"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/last_author"
@@ -59,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Ronald Tchuekou"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -76,25 +75,25 @@
             android:drawableStart="@drawable/ic_push"
             android:drawablePadding="-8dp"
             android:drawableTint="@color/dark"
-            android:text="Mouaji Loïc"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold"
+            android:text="@string/point3"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toBottomOf="@+id/last_author"
-            tools:ignore="NewApi" />
+            tools:ignore="NewApi,UnusedAttribute" />
 
         <TextView
             android:id="@+id/last_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_date"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="Samedi 07 Main 2020 à 12:12"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/last_author"
             app:layout_constraintTop_toTopOf="@+id/last_author" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,8 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/dark"
-        android:textSize="17sp"
-        android:text="We've provided a new RecyclerView adapter in the staggeredgridlayout package which displays an asymmetric staggered card layout, meant to scroll horizontally. Feel free to dig into that code on your own, but we will not go over how it's implemented here.  In order to use this new adapter, modify your onCreateView() method in ProductGridFragment.java. Replace the code block after the &quot;set up the RecyclerView&quot; comment with the following:" />
+        android:textSize="17sp" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/contentImage1"
@@ -122,25 +120,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/image1"
+                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:contentDescription="image1"
-                app:srcCompat="@drawable/side_nav_bar" />
+                android:contentDescription="@string/image_description"
+                app:srcCompat="@drawable/side_nav_bar"
+                tools:ignore="UnusedAttribute" />
 
             <TextView
                 android:id="@+id/imageDescription1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:background="@drawable/edit_description_image_bg"
+                android:paddingHorizontal="5dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingHorizontal="5dp"
-                android:text="Dans cette image se trouve l'énoncé de l'exercice en question."
-                />
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -159,24 +160,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/image2"
+                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:contentDescription="image2"
-                app:srcCompat="@drawable/side_nav_bar" />
+                android:contentDescription="@string/image_description"
+                app:srcCompat="@drawable/side_nav_bar"
+                tools:ignore="UnusedAttribute" />
 
             <TextView
                 android:id="@+id/imageDescription2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:background="@drawable/edit_description_image_bg"
+                android:paddingHorizontal="5dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingHorizontal="5dp"
-                android:text="Build and run. The product grid items should now be staggered:" />
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

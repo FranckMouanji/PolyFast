@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.polyfast.R;
+import com.example.polyfast.forumManager.database.StudentHelper;
+import com.example.polyfast.forumManager.models.Student;
 import com.example.polyfast.forumManager.utils.Utils;
 import com.example.polyfast.forumManager.models.ForumQuestion;
 
@@ -53,7 +55,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       String responseNum = "" + forumQuestion.getResponseCount();
       holder.response_number.setText(responseNum);
       holder.material.setText(forumQuestion.getMaterial());
-      holder.user_name.setText("Ronald Tchuekou"); // TODO Set the user name.
+
+      StudentHelper.getStudent(forumQuestion.getAuthorId()).addOnSuccessListener(success-> {
+         Student student = success.toObject(Student.class);
+         assert student != null;
+         String authorName = student.getName() + student.getSurname();
+         holder.user_name.setText(authorName);
+      });
 
       String dateFormat = Utils.getFullDateFormat(forumQuestion.getPushDate()) + " " +
             context.getResources().getString(R.string.at) + " " +
@@ -74,7 +82,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       TextView user_name, label, description, class_name,
             response_number, date_push, material;
 
-      public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
+      ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
          super(itemView);
 
          user_name = itemView.findViewById(R.id.user_name);

@@ -68,7 +68,7 @@ public class Controller {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     public static boolean verif_file(Context context) {
         if (verif_file_exist(context)) {
             String content_of_file = Controller.take_information_of_file_users(context);
@@ -128,7 +128,7 @@ public class Controller {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String take_information_of_file_users(Context context) {
         String information_user_take;
 
@@ -161,7 +161,7 @@ public class Controller {
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static Temp_information_user Trans_to_Temp_information_user(Context context){
         Temp_information_user temp_information_user;
         String information_user = Controller.take_information_of_file_users(context);

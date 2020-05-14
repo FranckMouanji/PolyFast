@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_background2.png.flat",
-        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xxhdpi\\background2.png"
-    },
-    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_primary_bg.xml.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable\\button_primary_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_background2.png.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xxhdpi\\background2.png"
     },
     {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
@@ -24,12 +24,12 @@
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xhdpi\\icons_menu.png"
     },
     {
-        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_correction_exercice_fragment.xml.flat",
-        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\correction_exercice_fragment.xml"
-    },
-    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_plate_form.xml.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\activity_plate_form.xml"
+    },
+    {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_correction_exercice_fragment.xml.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\correction_exercice_fragment.xml"
     },
     {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_plate_form.xml.flat",
@@ -56,16 +56,24 @@
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xxhdpi\\icons_menu.png"
     },
     {
-        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pdf_image.xml.flat",
-        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable\\pdf_image.xml"
-    },
-    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_cour.xml.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\fragment_cour.xml"
     },
     {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pdf_image.xml.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable\\pdf_image.xml"
+    },
+    {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_drop_down_material.xml.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\item_drop_down_material.xml"
+    },
+    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_edit.xml.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable\\ic_edit.xml"
     },
     {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_download.png.flat",
@@ -96,6 +104,10 @@
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\bottomsheet_response.xml"
     },
     {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_full_image_view.xml.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\layout\\activity_full_image_view.xml"
+    },
+    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_download.png.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xhdpi\\download.png"
     },
@@ -108,12 +120,12 @@
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable\\button_close_bottom_sheet_bg.xml"
     },
     {
-        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_polifast.png.flat",
-        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-ldpi\\polifast.png"
-    },
-    {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_background2.png.flat",
         "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-xhdpi\\background2.png"
+    },
+    {
+        "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_polifast.png.flat",
+        "source": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\src\\main\\res\\drawable-ldpi\\polifast.png"
     },
     {
         "merged": "C:\\Users\\GENERAL STORE\\Desktop\\App\\PolyFast\\app\\build\\intermediates\\res\\merged\\debug\\layout_a__propos_fragment.xml.flat",

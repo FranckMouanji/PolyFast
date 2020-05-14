@@ -22,11 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-
 public class ActionAboutUsers {
+
     private static final String COLLECTION_NAME = "Users";
     private static final String ID_USER = "email";
-
 
     private static CollectionReference getUsersCollection(){
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
@@ -41,7 +40,6 @@ public class ActionAboutUsers {
                 .whereEqualTo(ID_USER, mail)
                 .get();
     }
-
 
     public static void setUsersInFirestore(final Context context, final Users users, final Answer answer, final Answer answer1, final Answer answer2){
         final ProgressDialog progressDialog = new ProgressDialog(context);
@@ -69,7 +67,7 @@ public class ActionAboutUsers {
                     Intent intent = new Intent(context, PlateForm.class);
                     context.startActivity(intent);
 
-                    Utils.addUser(users); // Add user in particular collection.
+                    Utils.addUser(users, context); // Add user in particular collection.
 
                     ((Activity)context).finish();
                 });
@@ -109,6 +107,9 @@ public class ActionAboutUsers {
 
                     Controller.create_file(users, context);
                     Intent intent = new Intent(context, PlateForm.class);
+
+                    Utils.addToSQL(users, context);
+
                     context.startActivity(intent);
                     ((Activity)context).finish();
                 }
@@ -142,7 +143,7 @@ public class ActionAboutUsers {
             Intent intent = new Intent(context, PlateForm.class);
             context.startActivity(intent);
 
-            Utils.updateUser(users); // Update the particular collection.
+            Utils.updateUser(users, context); // Update the particular collection.
 
             ((Activity)context).finish();
         }).addOnFailureListener(e -> {

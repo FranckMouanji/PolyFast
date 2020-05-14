@@ -5,10 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -16,19 +15,27 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.polyfast.R;
+import com.example.polyfast.forumManager.FullImageView;
+import com.example.polyfast.forumManager.database.ImageStorageHelper;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
@@ -41,13 +48,19 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
    private TextInputLayout outlinedTextField;
    private TextInputEditText response_text;
    private ImageView imageView;
-   private Bitmap image;
+   private TextView text_loading;
+   private ProgressBar imageProgress;
+   private String imageUrl;
    private View v;
+   private Button validated;
+   private Uri imageUri;
 
    @NonNull
    @Override
    public Dialog onCreateDialog(Bundle savedInstanceState) {
       BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+
+      assert getArguments() != null;
 
       v = View.inflate(getContext(), R.layout.bottomsheet_response, null);
 
@@ -57,15 +70,25 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
       layout.setLayoutParams(params);
 
 
-      Button validated = v.findViewById(R.id.send_comment);
+      validated = v.findViewById(R.id.send_comment);
       Button cancelled = v.findViewById(R.id.cancel_btn);
       ImageButton choseImage = v.findViewById(R.id.chose_image);
       ImageButton close_btn = v.findViewById(R.id.close_btn);
       ImageButton deleted_image = v.findViewById(R.id.deleted_image);
+      imageProgress = v.findViewById(R.id.imageUploadProgress);
 
       response_text = v.findViewById(R.id.comment_text);
       outlinedTextField = v.findViewById(R.id.outlinedTextField);
       imageView = v.findViewById(R.id.image_response);
+      text_loading = v.findViewById(R.id.text_loading);
+
+      imageView.setOnClickListener(v->{
+         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat
+               .makeSceneTransitionAnimation(requireActivity(),imageView,"image");
+         Intent fullImageIntent = new Intent(requireContext(), FullImageView.class);
+         fullImageIntent.putExtra("imageUri", imageUri.toString());
+         startActivity(fullImageIntent, activityOptionsCompat.toBundle());
+      });
 
       deleted_image.setOnClickListener(v3 -> {
          v.findViewById(R.id.image).setVisibility(View.GONE);
@@ -95,7 +118,7 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
    }
 
    public interface BottomSheetListener {
-      void onButtonClicked(String text, @Nullable Bitmap image);
+      void onButtonClicked(String text, @Nullable String image);
    }
 
    @Override
@@ -173,9 +196,20 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
 
       if (responseIsValid()){
 
-         String query = Objects.requireNonNull(response_text.getText()).toString().trim();
-         mListener.onButtonClicked(query, image);
-         dismiss();
+         validated.setClickable(false);
+         validated.setActivated(false);
+         validated.setBackgroundColor(requireContext().getResources().getColor(R.color.darkLight));
+
+         if (imageUri == null){
+            String query = Objects.requireNonNull(response_text.getText()).toString().trim();
+            mListener.onButtonClicked(query, null);
+            dismiss();
+         }
+         else if (storageTask != null && storageTask.isInProgress()) {
+            Toast.makeText(requireContext(), "Upload in progress", Toast.LENGTH_SHORT).show();
+         } else {
+            uploadImage();
+         }
 
       }
 
@@ -197,18 +231,22 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
       super.onActivityResult(requestCode, resultCode, data);
 
       if (resultCode == RESULT_OK) {
-         Uri imageUri = Objects.requireNonNull(data).getData();
+         imageUri = Objects.requireNonNull(data).getData();
 
          if (requestCode == PICK_IMAGE_REQUEST_CODE){
-            try {
-               Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), imageUri);
-               image = imageBitmap;
-               imageView.setImageBitmap(imageBitmap);
-               v.findViewById(R.id.image).setVisibility(View.VISIBLE);
-               v.findViewById(R.id.container_btn_chose_image).setVisibility(View.GONE);
-            } catch (IOException e) {
-               e.printStackTrace();
-            }
+            Glide.with(requireContext())
+                  .load(imageUri)
+                  .centerCrop()
+                  .into(imageView);
+            v.findViewById(R.id.image).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.container_btn_chose_image).setVisibility(View.GONE);
+//            try {
+//               Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), imageUri);
+//               imageView.setImageBitmap(imageBitmap);
+//
+//            } catch (IOException e) {
+//               e.printStackTrace();
+//            }
          }
 
       }
@@ -217,6 +255,45 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
    @Override
    public void onDismiss(@NonNull DialogInterface dialog) {
       super.onDismiss(dialog);
-      image = null;
+      imageUrl = null;
+   }
+
+   private StorageTask storageTask;
+
+   /**
+    * Function to upload the image to fireStorage.
+    */
+   private void uploadImage () {
+
+      UploadTask uploadTask = ImageStorageHelper.add(imageUri, requireContext());
+      if (uploadTask != null) {
+         imageProgress.setVisibility(View.VISIBLE);
+         text_loading.setVisibility(View.VISIBLE);
+         storageTask = uploadTask
+               .addOnProgressListener(taskSnapshot -> {
+                  double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                        .getTotalByteCount());
+                  imageProgress.setProgress((int) progress);
+               })
+               .addOnFailureListener(e -> Toast.makeText(requireContext(), e.getMessage(),
+                     Toast.LENGTH_SHORT).show())
+               .addOnSuccessListener(success -> {
+
+                  Handler handler = new Handler();
+                  handler.postDelayed(() -> imageProgress.setProgress(0), 100);
+
+                  Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
+
+                  success.getStorage().getDownloadUrl().addOnSuccessListener(taskSuccess->{
+                     imageUrl = taskSuccess.toString();
+                     String query = Objects.requireNonNull(response_text.getText()).toString().trim();
+                     mListener.onButtonClicked(query, imageUrl);
+                     dismiss();
+                  }).addOnFailureListener(taskFailure-> Toast.makeText(getContext(),
+                        requireContext().getString(R.string.error_has_provided), Toast.LENGTH_SHORT).show());
+
+               });
+
+      }
    }
 }

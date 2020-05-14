@@ -11,16 +11,18 @@ public class ForumComment extends ForumModelsFactory{
    private String comment;
    private Date date;
    private String responseId;
+   private String status;
 
    public ForumComment() {
    }
 
-   public ForumComment(String id, String authorId, String comment, Date date, String responseId) {
+   public ForumComment(String id, String authorId, String comment, Date date, String responseId, String status) {
       this.id = id;
       this.authorId = authorId;
       this.comment = comment;
       this.date = date;
       this.responseId = responseId;
+      this.status = status;
    }
 
    public String getId() {
@@ -63,6 +65,14 @@ public class ForumComment extends ForumModelsFactory{
       this.responseId = responseId;
    }
 
+   public String getStatus () {
+      return status;
+   }
+
+   public void setStatus (String status) {
+      this.status = status;
+   }
+
    @NonNull
    @Override
    public String toString() {
@@ -72,6 +82,7 @@ public class ForumComment extends ForumModelsFactory{
             ", comment='" + comment + '\'' +
             ", date=" + date +
             ", responseId='" + responseId + '\'' +
+            ", status='" + status + '\'' +
             '}';
    }
 }

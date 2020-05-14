@@ -31,4 +31,5 @@
     <string name="no_download">aucun téléchargement....</string>
     <string name="select_file">Selectionner un fichier</string>
     <string name="forum">Forum</string>
+    <string name="point3">....</string>
 </resources>

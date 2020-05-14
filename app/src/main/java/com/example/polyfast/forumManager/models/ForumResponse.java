@@ -14,12 +14,14 @@ public class ForumResponse extends ForumModelsFactory {
    private String questionId;
    private int commentCount;
    private int validateCount;
+   private String status;
 
    public ForumResponse() {
    }
 
    public ForumResponse(String id, String authorId, Date answerDate, String response,
-                        String image1, String questionId, int commentCount, int validateCount) {
+                        String image1, String questionId, int commentCount, int validateCount,
+                        String status) {
       this.id = id;
       this.authorId = authorId;
       this.answerDate = answerDate;
@@ -28,6 +30,7 @@ public class ForumResponse extends ForumModelsFactory {
       this.questionId = questionId;
       this.commentCount = commentCount;
       this.validateCount = validateCount;
+      this.status = status;
    }
 
    public String getId() {
@@ -94,6 +97,14 @@ public class ForumResponse extends ForumModelsFactory {
       this.validateCount = validateCount;
    }
 
+   public String getStatus () {
+      return status;
+   }
+
+   public void setStatus (String status) {
+      this.status = status;
+   }
+
    @NonNull
    @Override
    public String toString() {
@@ -106,6 +117,7 @@ public class ForumResponse extends ForumModelsFactory {
             ", questionId='" + questionId + '\'' +
             ", commentCount='" + commentCount + '\'' +
             ", validateCount='" + validateCount + '\'' +
+            ", status='" + status + '\'' +
             '}';
    }
 }

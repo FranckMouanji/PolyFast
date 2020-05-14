@@ -207,5 +207,20 @@
     <string name="image_description">Description de l\'image</string>
     <string name="text_too_long">La longueure maximale du text est dépacée.</string>
     <string name="chose_an_app_image">Choisir une application pour selectionner une image.</string>
+    <string name="material">Matière</string>
+    <string name="post_is_success">Posté avec succès !</string>
+    <string name="error_has_provided">Une erreur s\'est produite.</string>
+    <string name="loading_send">Envoie en cours...</string>
+    <string name="loading">Chargement en cours...</string>
+    <string name="no_answer">Pas de réponse.</string>
+    <string name="response">"Réponse "</string>
+    <string name="person_comment_this">Personnes ont commentés cette réponse.</string>
+    <string name="point3">....</string>
+    <string name="no_comment">Pas de commentaires.</string>
+    <string name="responses_validate">Réponse validée.</string>
+
+    <string name="title_activity_full_image_view">FullImageView</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

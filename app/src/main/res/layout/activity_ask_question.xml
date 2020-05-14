@@ -44,6 +44,29 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_material"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:hint="@string/material"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/colorAccent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        tools:ignore="LabelFor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/outline_label_question"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -59,7 +82,7 @@
                     app:hintTextColor="@color/colorAccent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/layout_material">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/label_question"
@@ -118,18 +141,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingHorizontal="8dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="10dp">
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp">
 
                         <ImageButton
                             android:id="@+id/deleted_image1"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="2dp"
                             android:background="@drawable/button_deleted_image_bg"
                             android:contentDescription="images1"
                             android:elevation="6dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="2dp"
                             app:layout_constraintEnd_toEndOf="@+id/imageView1"
                             app:layout_constraintTop_toTopOf="@+id/imageView1"
                             app:srcCompat="@drawable/ic_deleted_image"
@@ -139,48 +162,67 @@
                             android:id="@+id/imageView1"
                             android:layout_width="0dp"
                             android:layout_height="250dp"
+                            android:transitionName="image"
                             android:contentDescription="@string/image_description"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/side_nav_bar" />
+                            app:srcCompat="@drawable/side_nav_bar"
+                            tools:ignore="UnusedAttribute" />
+
                         <TextView
                             android:id="@+id/textViewLabel1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="@string/image_description"
                             android:labelFor="@+id/image_description1"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView1"
+                            android:text="@string/image_description"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+
                         <EditText
                             android:id="@+id/image_description1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:autofillHints="Image description"
+                            android:background="@drawable/edit_description_image_bg"
                             android:ems="10"
+                            android:inputType="textMultiLine|textCapSentences"
                             android:paddingHorizontal="15dp"
                             android:paddingVertical="5dp"
-                            android:background="@drawable/edit_description_image_bg"
-                            android:inputType="textMultiLine|textCapSentences"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textViewLabel1"
-                            android:autofillHints="Image description" />
+                            app:layout_constraintTop_toBottomOf="@+id/textViewLabel1" />
+
                         <TextView
                             android:id="@+id/error_image_description1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:visibility="gone"
-                            android:textColor="@color/red"
                             android:drawableStart="@drawable/ic_error"
-                            android:text="@string/description_not_empty"
+                            android:ellipsize="end"
                             android:paddingHorizontal="10dp"
-                            app:layout_constraintTop_toBottomOf="@+id/image_description1"
+                            android:singleLine="true"
+                            android:text="@string/description_not_empty"
+                            android:textColor="@color/red"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/image_description1" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar1"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView1"
+                            app:layout_constraintStart_toStartOf="@+id/imageView1"
+                            app:layout_constraintTop_toTopOf="@+id/imageView1"
+                            tools:ignore="NewApi" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -206,18 +248,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingHorizontal="8dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="10dp">
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp">
 
                         <ImageButton
                             android:id="@+id/deleted_image2"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="2dp"
                             android:background="@drawable/button_deleted_image_bg"
                             android:contentDescription="images1"
                             android:elevation="6dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="2dp"
                             app:layout_constraintEnd_toEndOf="@+id/imageView2"
                             app:layout_constraintTop_toTopOf="@+id/imageView2"
                             app:srcCompat="@drawable/ic_deleted_image"
@@ -227,48 +269,67 @@
                             android:id="@+id/imageView2"
                             android:layout_width="0dp"
                             android:layout_height="250dp"
+                            android:transitionName="image"
+                            android:contentDescription="@string/image_description"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/couleur_de_font"
-                            android:contentDescription="@string/image_description" />
+                            tools:ignore="UnusedAttribute" />
+
                         <TextView
                             android:id="@+id/textViewLabel2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="@string/image_description"
                             android:labelFor="@+id/image_description2"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                            android:text="@string/image_description"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
                         <EditText
                             android:id="@+id/image_description2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:autofillHints="Image description"
+                            android:background="@drawable/edit_description_image_bg"
                             android:ems="10"
+                            android:inputType="textMultiLine|textCapSentences"
                             android:paddingHorizontal="15dp"
                             android:paddingVertical="5dp"
-                            android:background="@drawable/edit_description_image_bg"
-                            android:inputType="textMultiLine|textCapSentences"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textViewLabel2"
-                            android:autofillHints="Image description" />
+                            app:layout_constraintTop_toBottomOf="@+id/textViewLabel2" />
+
                         <TextView
                             android:id="@+id/error_image_description2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:visibility="gone"
-                            android:textColor="@color/red"
                             android:drawableStart="@drawable/ic_error"
-                            android:text="@string/description_not_empty"
+                            android:ellipsize="end"
                             android:paddingHorizontal="10dp"
-                            app:layout_constraintTop_toBottomOf="@+id/image_description2"
+                            android:singleLine="true"
+                            android:text="@string/description_not_empty"
+                            android:textColor="@color/red"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/image_description2" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar2"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toTopOf="@+id/textViewLabel2"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                            app:layout_constraintStart_toStartOf="@+id/imageView2"
+                            app:layout_constraintTop_toTopOf="@+id/imageView2"
+                            tools:ignore="NewApi" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

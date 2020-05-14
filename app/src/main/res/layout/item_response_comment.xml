@@ -31,23 +31,25 @@
 
         <TextView
             android:id="@+id/comment_author"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Ronald Tchuekou"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toTopOf="@+id/avatar" />
 
         <TextView
             android:id="@+id/comment_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Lundi 20 Mai 2020 à 10:13"
             android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toBottomOf="@+id/comment_author" />
 
@@ -55,7 +57,6 @@
             android:id="@+id/comment_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="If you Command + Click (or Control + Click) the string resource that they are part of the Shrine app."
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

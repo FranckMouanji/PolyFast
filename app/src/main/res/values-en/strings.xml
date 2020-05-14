@@ -92,4 +92,13 @@
     <string name="question_description">Question description</string>
     <string name="text_too_long">The maimum length of the text is subpached.</string>
     <string name="chose_an_app_image">Chose an application to select an image.</string>
+    <string name="material">Material</string>
+    <string name="post_is_success">Post successful !</string>
+    <string name="error_has_provided">An error are provided.</string>
+    <string name="loading_send">Sending...</string>
+    <string name="loading">Loading...</string>
+    <string name="point3">....</string>
+    <string name="no_answer">No answer.</string>
+    <string name="response">Answer</string>
+    <string name="person_comment_this">Persons are commented this response.</string>
 </resources>

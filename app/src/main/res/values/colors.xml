@@ -12,4 +12,6 @@
     <color name="listView_content_color">#D1B67C</color>
     <color name="colorResponse">#D37E00</color>
     <color name="transparent">#00000000</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

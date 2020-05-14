@@ -21,9 +21,13 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_add_question"
+        app:elevation="8dp"
+        android:outlineAmbientShadowColor="@color/dark"
+        android:outlineSpotShadowColor="@color/dark"
+        app:srcCompat="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        android:focusable="true"
+        tools:ignore="UnusedAttribute" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,10 +11,15 @@
         android:allowBackup="true"
         android:icon="@drawable/polifast"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/polifast"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".forumManager.AskQuestion"/>
+        <activity
+            android:name=".forumManager.FullImageView"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_full_image_view"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name=".forumManager.AskQuestion" />
         <activity android:name=".forumManager.QuestionDetail" />
         <activity android:name=".Activities.DownloadedFile" />
         <activity

@@ -70,8 +70,6 @@ public class ActionAboutFile {
                 .get();
     }
 
-
-
     public static void setFile(Context context, File_uploaded fileUploaded, Uri data){
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Uploading...");
@@ -81,50 +79,38 @@ public class ActionAboutFile {
 
             StorageReference reference = getFileReference().child(FILEPATH_NAME_COUR+System.currentTimeMillis()+".pdf");
             reference.putFile(data)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uri.isComplete());
-                            Uri url = uri.getResult();
-                            fileUploaded.setFilePathInFirebase(url.toString());
-                            ActionAboutFile.getFileCollection().document().set(fileUploaded);
-                            Toast.makeText(context, "uploaded", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        }
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uri.isComplete());
+                        Uri url = uri.getResult();
+                        fileUploaded.setFilePathInFirebase(url.toString());
+                        ActionAboutFile.getFileCollection().document().set(fileUploaded);
+                        Toast.makeText(context, "uploaded", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                            double progess = (100.0*taskSnapshot.getBytesTransferred())/ taskSnapshot.getTotalByteCount();
-                            progressDialog.setMessage("Uploaded: "+(int)progess+"%");
+                    .addOnProgressListener(taskSnapshot -> {
+                        double progess = (100.0*taskSnapshot.getBytesTransferred())/ taskSnapshot.getTotalByteCount();
+                        progressDialog.setMessage("Uploaded: "+(int)progess+"%");
 
-                        }
                     });
 
         }else if (fileUploaded.getCategorie().equals("Exercice")){
 
             StorageReference reference = getFileReference().child(FILEPATH_NAME_EXERCISE+System.currentTimeMillis()+".pdf");
             reference.putFile(data)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uri.isComplete());
-                            Uri url = uri.getResult();
-                            fileUploaded.setFilePathInFirebase(url.toString());
-                            ActionAboutFile.getFileCollection().document().set(fileUploaded);
-                            Toast.makeText(context, "uploaded", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        }
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uri.isComplete());
+                        Uri url = uri.getResult();
+                        fileUploaded.setFilePathInFirebase(url.toString());
+                        ActionAboutFile.getFileCollection().document().set(fileUploaded);
+                        Toast.makeText(context, "uploaded", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                            double progess = (100.0*taskSnapshot.getBytesTransferred())/ taskSnapshot.getTotalByteCount();
-                            progressDialog.setMessage("Uploaded: "+(int)progess+"%");
+                    .addOnProgressListener(taskSnapshot -> {
+                        double progess = (100.0*taskSnapshot.getBytesTransferred())/ taskSnapshot.getTotalByteCount();
+                        progressDialog.setMessage("Uploaded: "+(int)progess+"%");
 
-                        }
                     });
 
         }else if (fileUploaded.getCategorie().equals("Correction Exercice")){
