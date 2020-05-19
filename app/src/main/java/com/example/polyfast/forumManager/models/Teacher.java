@@ -11,7 +11,7 @@ public class Teacher extends User {
 
    public Teacher(String id, String name, String surname, String email, String password,
                   String material) {
-      super(id, name, surname, email, password);
+      super(id, name, surname, email, password, null);
       this.material = material;
    }
 
@@ -27,7 +27,13 @@ public class Teacher extends User {
    @Override
    public String toString() {
       return "Teacher{" +
-            "material='" + material + '\'' +
+            "id='" + getId() + '\'' +
+            ", name='" + getName() + '\'' +
+            ", surname='" + getSurname() + '\'' +
+            ", email='" + getEmail() + '\'' +
+            ", password='" + getPassword() + '\'' +
+            ", token='" + getToken() + '\'' +
+            ", material='" + material + '\'' +
             '}';
    }
 }

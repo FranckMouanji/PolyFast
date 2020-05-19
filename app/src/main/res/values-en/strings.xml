@@ -101,4 +101,23 @@
     <string name="no_answer">No answer.</string>
     <string name="response">Answer</string>
     <string name="person_comment_this">Persons are commented this response.</string>
+    <string name="OK">OK</string>
+    <string name="require_connection">Connection require.</string>
+    <string name="msg_set_connection">Connection is require to forum fonctionnalities. Availabled your connection and retry.</string>
+    <string name="retry">Retry</string>
+    <string name="no_comment">No comments.</string>
+    <string name="responses_validate">Response is validate.</string>
+    <string name="title_activity_full_image_view">Normal image</string>
+    <string name="M">"Prof : "</string>
+    <string name="read">Read the content</string>
+    <string name="teacher">"Teacher : "</string>
+    <string name="by">by</string>
+    <string name="upload_completed">Loading complete.</string>
+    <string name="from">from</string>
+    <string name="on">on</string>
+    <string name="en">in</string>
+    <string name="new_response">New response</string>
+    <string name="new_interaction">New interaction</string>
+    <string name="student">"Student : "</string>
+    <string name="has_comment">has comment one response of the question</string>
 </resources>

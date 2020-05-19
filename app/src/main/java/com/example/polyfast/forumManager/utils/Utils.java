@@ -10,9 +10,11 @@ import com.example.polyfast.forumManager.database.TeacherHelper;
 import com.example.polyfast.forumManager.models.Student;
 import com.example.polyfast.forumManager.models.Teacher;
 import com.example.polyfast.forumManager.models.User;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Utils {
 
@@ -50,6 +52,14 @@ public class Utils {
 
          TeacherHelper.addTeacher(teacher).addOnSuccessListener(success->{
             users.setId(success.getId());
+            FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(command -> {
+               if (!command.isSuccessful()){
+                  Log.e(TAG, "error token", command.getException());
+                  return;
+               }
+               TeacherHelper.updateToken(Objects.requireNonNull(command.getResult()).getToken(),
+                     users.getId());
+            });
             addToSQL(users, context);
          });
       }
@@ -64,6 +74,14 @@ public class Utils {
 
          StudentHelper.addStudent(student).addOnSuccessListener(success->{
             users.setId(success.getId());
+            FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(command -> {
+               if (!command.isSuccessful()){
+                  Log.e(TAG, "error token", command.getException());
+                  return;
+               }
+               StudentHelper.updateToken(Objects.requireNonNull(command.getResult()).getToken(),
+                     users.getId());
+            });
             addToSQL(users, context);
          });
       }

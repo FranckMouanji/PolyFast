@@ -1,4 +1,4 @@
-package com.example.polyfast.Activities;
+package com.example.polyfast.activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;

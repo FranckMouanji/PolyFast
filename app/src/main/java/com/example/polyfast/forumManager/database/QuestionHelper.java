@@ -9,10 +9,8 @@ import com.example.polyfast.forumManager.models.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -37,21 +35,19 @@ public class QuestionHelper {
    /**
     * Function to get question collection.
     */
-   public static Task<QuerySnapshot> getQuestions (User user) {
+   public static Query getQuestions (User user) {
       if (user instanceof Student) {
             Student student = (Student) user;
          return getCollectionReference()
                .whereEqualTo("className", student.getClassLevel())
-               .orderBy("pushDate", Query.Direction.DESCENDING)
-               .get();
+               .orderBy("pushDate", Query.Direction.DESCENDING);
       }
       else{
          Teacher teacher = (Teacher) user;
          String[] materials = teacher.getMaterial().split("/");
          return getCollectionReference()
                .whereIn("material", Arrays.asList(materials))
-               .orderBy("pushDate", Query.Direction.DESCENDING)
-               .get();
+               .orderBy("pushDate", Query.Direction.DESCENDING);
       }
    }
 
@@ -59,8 +55,9 @@ public class QuestionHelper {
     * Function to get the question by id.
     * @param questionId Question id.
     */
-   public static Task<DocumentSnapshot> getQuestionById (String questionId) {
-      return getCollectionReference().document(questionId).get();
+   public static DocumentReference getQuestionById (String questionId) {
+      return getCollectionReference()
+            .document(questionId);
    }
 
    /**
@@ -90,6 +87,7 @@ public class QuestionHelper {
           } else
              Log.e(TAG, "Error", command.getException());
        });
-    }
+
+   }
 
 }

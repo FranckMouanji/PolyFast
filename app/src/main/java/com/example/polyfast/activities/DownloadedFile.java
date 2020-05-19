@@ -1,4 +1,4 @@
-package com.example.polyfast.Activities;
+package com.example.polyfast.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,7 +20,6 @@ import com.example.polyfast.R;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DownloadedFile extends AppCompatActivity {
 

@@ -32,4 +32,6 @@
     <string name="select_file">Selectionner un fichier</string>
     <string name="forum">Forum</string>
     <string name="point3">....</string>
+    <string name="OK">OK</string>
+    <string name="M">"Prof : "</string>
 </resources>

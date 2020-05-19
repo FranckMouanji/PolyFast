@@ -1,4 +1,4 @@
-package com.example.polyfast.forumManager;
+package com.example.polyfast.forumManager.activities;
 
 import android.annotation.SuppressLint;
 
@@ -103,7 +103,7 @@ public class FullImageView extends AppCompatActivity {
       // operations to prevent the jarring behavior of controls going away
       // while interacting with the UI.
       findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-      findViewById(R.id.dummy_button).setOnClickListener(v -> finish());
+      findViewById(R.id.dummy_button).setOnClickListener(v -> onBackPressed());
 
       setImage();
 

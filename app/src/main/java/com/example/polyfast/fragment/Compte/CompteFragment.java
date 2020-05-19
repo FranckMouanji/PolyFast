@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.polyfast.Activities.Sing_in_sind_up;
+import com.example.polyfast.activities.Sing_in_sind_up;
 import com.example.polyfast.R;
 import com.example.polyfast.data_class.Temp_information_user;
 import com.example.polyfast.fireBase_fonction.Controller;

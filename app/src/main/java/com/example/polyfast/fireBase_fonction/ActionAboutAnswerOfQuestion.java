@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.polyfast.Activities.Reset_Password;
+import com.example.polyfast.activities.Reset_Password;
 import com.example.polyfast.R;
 import com.example.polyfast.data_class.Answer;
 import com.example.polyfast.data_class.Users;

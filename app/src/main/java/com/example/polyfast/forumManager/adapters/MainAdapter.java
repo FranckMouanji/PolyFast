@@ -1,4 +1,4 @@
-package com.example.polyfast.forumManager;
+package com.example.polyfast.forumManager.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,18 +15,13 @@ import com.example.polyfast.forumManager.database.StudentHelper;
 import com.example.polyfast.forumManager.models.Student;
 import com.example.polyfast.forumManager.utils.Utils;
 import com.example.polyfast.forumManager.models.ForumQuestion;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import java.util.List;
+public class MainAdapter extends FirestoreRecyclerAdapter<ForumQuestion, MainAdapter.QuestionHolder> {
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
-
-   private List<ForumQuestion> forumQuestions;
    private Context context;
    private OnItemClickListener mListener;
-
-   public MainAdapter(List<ForumQuestion> forumQuestions) {
-      this.forumQuestions = forumQuestions;
-   }
 
    public interface OnItemClickListener {
       void onItemClick(int position);
@@ -36,17 +31,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       mListener = listener;
    }
 
+   public MainAdapter(@NonNull FirestoreRecyclerOptions<ForumQuestion> options) {
+      super(options);
+   }
+
    @NonNull
    @Override
-   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+   public QuestionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
       context = parent.getContext();
-      return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_question,
+      return new QuestionHolder(LayoutInflater.from(context).inflate(R.layout.item_question,
             parent, false), mListener);
    }
 
    @Override
-   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-      ForumQuestion forumQuestion = forumQuestions.get(position);
+   protected void onBindViewHolder(@NonNull QuestionHolder holder, int i, @NonNull ForumQuestion forumQuestion) {
 
       holder.avatar.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_account));
       holder.label.setText(forumQuestion.getLabel());
@@ -68,21 +66,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             Utils.getFullTimeFormat(forumQuestion.getPushDate());
 
       holder.date_push.setText(dateFormat);
-
    }
 
-   @Override
-   public int getItemCount() {
-      return forumQuestions.size();
-   }
-
-   static class ViewHolder extends RecyclerView.ViewHolder {
+   static class QuestionHolder extends RecyclerView.ViewHolder {
 
       ImageView avatar;
       TextView user_name, label, description, class_name,
             response_number, date_push, material;
 
-      ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
+      QuestionHolder(@NonNull View itemView, OnItemClickListener listener) {
          super(itemView);
 
          user_name = itemView.findViewById(R.id.user_name);

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".forumManager.FullImageView">
+    tools:context=".forumManager.activities.FullImageView">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:transitionName="image"
         android:keepScreenOn="true"
-        android:contentDescription="@string/dummy_content"
+        android:contentDescription="@string/image_description"
         android:textColor="@color/black_overlay"
         android:textSize="50sp"
         android:textStyle="bold"

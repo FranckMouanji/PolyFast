@@ -1408,6 +1408,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable account_icon
 drawable avd_hide_password
 drawable avd_show_password
 drawable background1
@@ -1744,7 +1745,7 @@ id filter_chip
 id fitToContents
 id fixed
 id forever
-id forum_recycler
+id forum_response
 id fragment_container_view_tag
 id fullscreen_content
 id fullscreen_content_controls
@@ -1989,6 +1990,8 @@ id textViewLabel2
 id text_input_end_icon
 id text_input_start_icon
 id text_loading
+id text_loading1
+id text_loading2
 id text_set_response
 id text_start
 id textinput_counter
@@ -2201,6 +2204,8 @@ mipmap ic_launcher_round
 mipmap pdf_launcher
 navigation mobile_navigation
 plurals mtrl_badge_content_description
+string M
+string OK
 string a_propos
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2240,6 +2245,7 @@ string ask_question
 string at
 string back
 string bottom_sheet_behavior
+string by
 string cancel
 string categorie_de_fichier
 string character_counter_content_description
@@ -2282,9 +2288,8 @@ string cour
 string deconnexion
 string default_web_client_id
 string description_not_empty
-string dummy_button
-string dummy_content
 string e_mail
+string en
 string enter_your_response
 string entrer_votre_adresse_mail
 string entrer_votre_mot_de_passe
@@ -2300,14 +2305,17 @@ string explication_de_questionnaire
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fcm_fallback_notification_channel_label
 string fili_re
 string firebase_database_url
 string forum
+string from
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string has_comment
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string home_second
@@ -2325,6 +2333,8 @@ string menu_slideshow
 string message_avertissement_deconnexion
 string mot_de_passe
 string mot_de_passe_oublier
+string msg_set_connection
+string msg_token_fmt
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2367,7 +2377,9 @@ string nav_header_title
 string navigation_drawer_close
 string navigation_drawer_open
 string new_comment
+string new_interaction
 string new_question
+string new_response
 string niveau
 string no_answer
 string no_comment
@@ -2377,6 +2389,7 @@ string nom
 string nom_du_document
 string nous_contacter
 string nouveau
+string on
 string oui
 string pas_de_compte_cr_er_un
 string password_toggle_content_description
@@ -2398,15 +2411,20 @@ string question_2
 string question_3
 string question_description
 string question_label
+string read
+string require_connection
 string response
 string responses_section
 string responses_validate
+string retry
 string reussi
 string search_menu_title
 string select_file
 string selection_fichier
 string status_bar_notification_info_overflow
 string statut
+string student
+string teacher
 string text_answer_or_question
 string text_erreur_question_1
 string text_erreur_question_2
@@ -2421,6 +2439,7 @@ string tous_les_champs_sont_requis
 string uniquement_le_niveau_2
 string upload
 string upload_by
+string upload_completed
 string user_exist
 string users_not_exist
 string valided

@@ -26,7 +26,7 @@ import androidx.core.app.ActivityOptionsCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.polyfast.R;
-import com.example.polyfast.forumManager.FullImageView;
+import com.example.polyfast.forumManager.activities.FullImageView;
 import com.example.polyfast.forumManager.database.ImageStorageHelper;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -240,13 +240,6 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
                   .into(imageView);
             v.findViewById(R.id.image).setVisibility(View.VISIBLE);
             v.findViewById(R.id.container_btn_chose_image).setVisibility(View.GONE);
-//            try {
-//               Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), imageUri);
-//               imageView.setImageBitmap(imageBitmap);
-//
-//            } catch (IOException e) {
-//               e.printStackTrace();
-//            }
          }
 
       }
@@ -256,6 +249,7 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
    public void onDismiss(@NonNull DialogInterface dialog) {
       super.onDismiss(dialog);
       imageUrl = null;
+      imageUri = null;
    }
 
    private StorageTask storageTask;
@@ -282,7 +276,7 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
                   Handler handler = new Handler();
                   handler.postDelayed(() -> imageProgress.setProgress(0), 100);
 
-                  Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
+                  Toast.makeText(getContext(), getString(R.string.upload_completed), Toast.LENGTH_LONG).show();
 
                   success.getStorage().getDownloadUrl().addOnSuccessListener(taskSuccess->{
                      imageUrl = taskSuccess.toString();
@@ -296,4 +290,5 @@ public class BottomSheetResponse extends BottomSheetDialogFragment {
 
       }
    }
+
 }

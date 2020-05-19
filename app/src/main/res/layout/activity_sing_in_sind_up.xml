@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/couleur_de_font"
-    tools:context=".Activities.Sing_in_sind_up">
+    tools:context=".activities.Sing_in_sind_up">
 
     <ImageView
         android:id="@+id/logo_polyFast"

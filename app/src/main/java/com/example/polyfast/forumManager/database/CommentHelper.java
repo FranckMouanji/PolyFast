@@ -6,7 +6,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  * class to managed the comments in the database.
@@ -24,11 +23,10 @@ public class CommentHelper {
    /**
     * Function to get Comment collection.
     */
-   public static Task<QuerySnapshot> getComments (String responseId) {
+   public static Query getComments (String responseId) {
       return getCollectionReference()
             .whereEqualTo("responseId", responseId)
-            .orderBy("date", Query.Direction.ASCENDING)
-            .get();
+            .orderBy("date", Query.Direction.ASCENDING);
    }
 
    /**

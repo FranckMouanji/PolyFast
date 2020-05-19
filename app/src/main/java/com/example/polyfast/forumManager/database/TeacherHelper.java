@@ -22,7 +22,7 @@ public class TeacherHelper {
 
    private static final String COLLECTION_NAME = "Teacher";
 
-   private static CollectionReference getCollectionReference() {
+   public static CollectionReference getCollectionReference() {
       return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
    }
 
@@ -74,4 +74,13 @@ public class TeacherHelper {
             });
    }
 
+
+   /**
+    * Function to update the token.
+    * @param token Token.
+    * @param userId User id.
+    */
+   public static void updateToken(String token, String userId) {
+      getCollectionReference().document(userId).update("token", token);
+   }
 }

@@ -111,12 +111,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:strokeWidth="1dp"
+        android:layout_marginTop="7dp"
+        android:visibility="gone"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         app:cardMaxElevation="5dp"
-        android:layout_marginTop="7dp"
-        app:strokeColor="@color/colorAccent">
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="1dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,10 +127,10 @@
 
             <ImageView
                 android:id="@+id/image1"
-                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="@string/image_description"
+                android:transitionName="image"
                 app:srcCompat="@drawable/side_nav_bar"
                 tools:ignore="UnusedAttribute" />
 
@@ -150,13 +152,15 @@
         android:id="@+id/contentImage2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_margin="10dp"
-        app:strokeWidth="1dp"
+        android:layout_marginTop="0dp"
+        android:visibility="gone"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         app:cardMaxElevation="5dp"
-        app:strokeColor="@color/colorAccent">
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="1dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -165,10 +169,10 @@
 
             <ImageView
                 android:id="@+id/image2"
-                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="@string/image_description"
+                android:transitionName="image"
                 app:srcCompat="@drawable/side_nav_bar"
                 tools:ignore="UnusedAttribute" />
 
@@ -190,11 +194,12 @@
         android:id="@+id/text_set_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/responses_section"
-        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorAccentLight"
         android:padding="10dp"
+        android:text="@string/responses_section"
         android:textColor="@color/white"
-        android:background="@color/colorAccentLight"/>
+        android:textSize="18sp" />
 
     <View
         android:layout_width="match_parent"

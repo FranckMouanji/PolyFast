@@ -9,7 +9,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Objects;
 
@@ -30,11 +29,10 @@ public class ResponseHelper {
    /**
     * Function to get Response collection.
     */
-   public static Task<QuerySnapshot> getResponses (String questionId) {
+   public static Query getResponses (String questionId) {
       return getCollectionReference()
             .whereEqualTo("questionId", questionId)
-            .orderBy("answerDate", Query.Direction.DESCENDING)
-            .get();
+            .orderBy("answerDate", Query.Direction.DESCENDING);
    }
 
    /**
@@ -66,8 +64,8 @@ public class ResponseHelper {
     * Function to update the comment count of the response.
     * @param responseId Response id.
     */
-   public static void updateCommentCount(String responseId) {
-      getCollectionReference().document(responseId).get().addOnCompleteListener(command -> {
+   public static Task<DocumentSnapshot> updateCommentCount(String responseId) {
+      return getCollectionReference().document(responseId).get().addOnCompleteListener(command -> {
          if (command.isSuccessful()) {
             getCollectionReference().document(responseId).update("commentCount", Objects
                   .requireNonNull(Objects.requireNonNull(command.getResult())

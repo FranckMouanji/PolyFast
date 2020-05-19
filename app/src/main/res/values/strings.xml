@@ -174,7 +174,7 @@
     <string name="vous_avez_oubli_le_nom_du_document">vous avez oublié le nom du document</string>
     <string name="selection_fichier">Selectionner un fichier PDF</string>
     <string name="verif_connexion">vérifiez votre connexion puis reessayez</string>
-    <string name="wait">Patientez un instant...</string>
+    <string name="wait">Patientez un instant…</string>
     <string name="upload_by">"uploader par "</string>
     <string name="contenu_vide">contenu vide</string>
     <string name="no_download">aucun téléchargement....</string>
@@ -191,7 +191,7 @@
     <string name="copy">CopyRight - 2020</string>
     <string name="your_response">Votre réponse.</string>
     <string name="cancel">Anuller</string>
-    <string name="enter_your_response">Entrer votre réponse...</string>
+    <string name="enter_your_response">Entrer votre réponse…</string>
     <string name="text_answer_or_question">Dans cette rubrique, vous avez la possibilité de répondre à cette question ou d\'en poser une autre. En utilisant les boutons ci-dessous.</string>
     <string name="max_character_text">Le numbre limite de caractère est dépacé !</string>
     <string name="close">Fermer</string>
@@ -210,17 +210,31 @@
     <string name="material">Matière</string>
     <string name="post_is_success">Posté avec succès !</string>
     <string name="error_has_provided">Une erreur s\'est produite.</string>
-    <string name="loading_send">Envoie en cours...</string>
-    <string name="loading">Chargement en cours...</string>
+    <string name="loading_send">Envoie en cours…</string>
+    <string name="loading">Chargement en cours…</string>
     <string name="no_answer">Pas de réponse.</string>
     <string name="response">"Réponse "</string>
     <string name="person_comment_this">Personnes ont commentés cette réponse.</string>
     <string name="point3">....</string>
     <string name="no_comment">Pas de commentaires.</string>
     <string name="responses_validate">Réponse validée.</string>
-
-    <string name="title_activity_full_image_view">FullImageView</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="require_connection">Connexion requise.</string>
+    <string name="msg_set_connection">Une connexion internet est requise pour le fonctionnement du forum. Veuillez acitiver votre connexion et réessayer.</string>
+    <string name="OK">OK</string>
+    <string name="retry">Réessayer</string>
+    <string name="title_activity_full_image_view">Image normale</string>
+    <string name="M">"Prof : "</string>
+    <string name="student">"Eleve : "</string>
+    <string name="msg_token_fmt" translatable="false">msg token fmt</string>
+    <string name="new_interaction">Nouvelle interaction.</string>
+    <string name="new_response">Nouvelle réponse</string>
+    <string name="en">en</string>
+    <string name="on">sur</string>
+    <string name="from">de</string>
+    <string name="upload_completed">Chargement complete.</string>
+    <string name="by">par</string>
+    <string name="teacher">"Enseignant : "</string>
+    <string name="read">Lire le contenue</string>
+    <string name="has_comment">a commenté une réponse de question</string>
 
 </resources>

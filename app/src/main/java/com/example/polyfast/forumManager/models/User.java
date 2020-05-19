@@ -9,16 +9,18 @@ public class User {
    private String surname;
    private String email;
    private String password;
+   private String token;
 
    public User() {
    }
 
-   User(String id, String name, String surname, String email, String password) {
+   User(String id, String name, String surname, String email, String password, String token) {
       this.id = id;
       this.name = name;
       this.surname = surname;
       this.email = email;
       this.password = password;
+      this.token = token;
    }
 
    public String getId() {
@@ -61,6 +63,10 @@ public class User {
       this.password = password;
    }
 
+   public String getToken() { return token; }
+
+   public void setToken (String token){ this.token = token; }
+
    @NonNull
    @Override
    public String toString() {
@@ -70,6 +76,7 @@ public class User {
             ", surname='" + surname + '\'' +
             ", email='" + email + '\'' +
             ", password='" + password + '\'' +
+            ", token='" + token + '\'' +
             '}';
    }
 }

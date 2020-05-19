@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.polyfast.Activities.PlateForm;
+import com.example.polyfast.activities.PlateForm;
 import com.example.polyfast.R;
 import com.example.polyfast.data_class.Answer;
 import com.example.polyfast.data_class.File_uploaded;

@@ -12,7 +12,7 @@ public class Student extends User {
 
    public Student(String id, String name, String surname, String email,
                   String password, String classLevel, String level) {
-      super(id, name, surname, email, password);
+      super(id, name, surname, email, password, null);
       this.classLevel = classLevel;
       this.level = level;
    }
@@ -37,7 +37,13 @@ public class Student extends User {
    @Override
    public String toString() {
       return "Student{" +
-            "classLevel='" + classLevel + '\'' +
+            "id='" + getId() + '\'' +
+            ", name='" + getName() + '\'' +
+            ", surname='" + getSurname() + '\'' +
+            ", email='" + getEmail() + '\'' +
+            ", password='" + getPassword() + '\'' +
+            ", token='" + getToken() + '\'' +
+            ", classLevel='" + classLevel + '\'' +
             ", level='" + level + '\'' +
             '}';
    }

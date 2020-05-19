@@ -1,10 +1,6 @@
 package com.example.polyfast.fragment;
 
-import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,59 +14,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.polyfast.R;
-import com.example.polyfast.forumManager.AskQuestion;
-import com.example.polyfast.forumManager.MainAdapter;
-import com.example.polyfast.forumManager.QuestionDetail;
+import com.example.polyfast.forumManager.activities.AskQuestion;
+import com.example.polyfast.forumManager.adapters.MainAdapter;
+import com.example.polyfast.forumManager.activities.QuestionDetail;
 import com.example.polyfast.forumManager.database.QuestionHelper;
 import com.example.polyfast.forumManager.database.SQLiteUserManager;
 import com.example.polyfast.forumManager.models.ForumQuestion;
 import com.example.polyfast.forumManager.models.Student;
 import com.example.polyfast.forumManager.models.User;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-import static com.example.polyfast.forumManager.QuestionDetail.ANSWER_COUNT_ACTION;
 
 public class Forum extends Fragment {
 
-    public static final String QUESTION_ID = "Question_id";
-   public static final String POSITION = "Position";
+   public static final String QUESTION_ID = "Question_id";
    private MainAdapter adapter;
-    private List<ForumQuestion> questions;
-    private BroadcastReceiver receiver;
+   private RecyclerView recyclerView;
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.forum_fragment, container, false);
+   @Override
+   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                            @Nullable Bundle savedInstanceState) {
+      View v = inflater.inflate(R.layout.forum_fragment, container, false);
 
-        RecyclerView recyclerView = v.findViewById(R.id.question_recycler);
+      recyclerView = v.findViewById(R.id.question_recycler);
 
-        setFab(v);
+      setFab(v);
 
-        questions = new ArrayList<>();
+      setListOfQuestion();
 
-        adapter = new MainAdapter(questions);
-        
-        adapter.setOnItemClickListener(position -> {
-            Intent intent = new Intent(getContext(), QuestionDetail.class);
-            intent.putExtra(QUESTION_ID, questions.get(position).getId());
-            intent.putExtra(POSITION, position);
-            requireContext().startActivity(intent);
-        });
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-
-        setListOfQuestion();
-
-        return v;
-    }
+      return v;
+   }
 
    /**
     * Function to set the floating action button.
@@ -88,65 +63,45 @@ public class Forum extends Fragment {
          fab.setVisibility(View.GONE);
    }
 
-   /**
-     * Function to set the list of question.
-     */
-    private void setListOfQuestion () {
-
-        ProgressDialog progressDialog = ProgressDialog.show(getContext(), null,
-              requireContext().getString(R.string.loading));
-
-        User user = new SQLiteUserManager(getContext()).getUserInfo();
-
-        QuestionHelper.getQuestions(user).addOnCompleteListener(complete -> {
-           if (complete.isSuccessful()){
-                for (DocumentSnapshot document : Objects.requireNonNull(complete.getResult()).getDocuments()) {
-                    ForumQuestion question = document.toObject(ForumQuestion.class);
-
-                    assert question != null;
-                    question.setId(document.getId());
-
-                    questions.add(question);
-
-                }
-                adapter.notifyDataSetChanged();
-           }
-           else
-               Objects.requireNonNull(complete.getException()).printStackTrace();
-
-           progressDialog.dismiss();
-        });
-
-    }
-
    @Override
-   public void onResume() {
-      super.onResume();
-
-      receiver = new BroadcastReceiver() {
-         @Override
-         public void onReceive(Context context, Intent intent) {
-            int mPosition = intent.getIntExtra(POSITION, 0);
-            int responseCount = intent.getIntExtra("response_count", 0);
-
-            ForumQuestion question = questions.get(mPosition);
-            question.setResponseCount(responseCount);
-
-            questions.remove(mPosition);
-            questions.add(mPosition, question);
-
-            adapter.notifyItemChanged(mPosition);
-         }
-      };
-      requireContext().registerReceiver(receiver, new IntentFilter(ANSWER_COUNT_ACTION));
+   public void onStart() {
+      super.onStart();
+      adapter.startListening();
    }
 
    @Override
    public void onDestroy() {
       super.onDestroy();
+      adapter.stopListening();
+   }
 
-      if (receiver != null)
-         requireContext().unregisterReceiver(receiver);
+   /**
+    * Function to set the list of question.
+    */
+   private void setListOfQuestion () {
+
+      User user = new SQLiteUserManager(getContext()).getUserInfo();
+
+      Query query = QuestionHelper.getQuestions(user);
+
+      FirestoreRecyclerOptions<ForumQuestion> options = new FirestoreRecyclerOptions.Builder<ForumQuestion>()
+            .setQuery(query, ForumQuestion.class)
+            .build();
+
+      adapter = new MainAdapter(options);
+
+      recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+      recyclerView.setHasFixedSize(true);
+      recyclerView.setAdapter(adapter);
+
+      adapter.setOnItemClickListener(position -> {
+         String question_id = adapter.getSnapshots().getSnapshot(position).getId();
+         Intent intent = new Intent(getContext(), QuestionDetail.class);
+         intent.putExtra(QUESTION_ID, question_id);
+         requireContext().startActivity(intent);
+      });
+
+
    }
 
 }

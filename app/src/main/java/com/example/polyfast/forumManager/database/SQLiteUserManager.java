@@ -139,6 +139,7 @@ public class SQLiteUserManager extends SQLiteOpenHelper {
             return new Student(id, name, surname, email, password, classLevel, level);
          else
             return new Teacher(id, name, surname, email, password, material);
+
       }
       catch (SQLiteException e) {
          Log.e(TAG, "Error : ", e);

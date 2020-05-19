@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".forumManager.services.App"
         android:allowBackup="true"
         android:icon="@drawable/polifast"
         android:label="@string/app_name"
@@ -15,26 +16,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".forumManager.FullImageView"
+            android:name=".forumManager.activities.FullImageView"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_full_image_view"
-            android:theme="@style/FullscreenTheme"></activity>
-        <activity android:name=".forumManager.AskQuestion" />
-        <activity android:name=".forumManager.QuestionDetail" />
-        <activity android:name=".Activities.DownloadedFile" />
+            android:theme="@style/FullscreenTheme"/>
+        <activity android:name=".forumManager.activities.AskQuestion" />
+        <activity android:name=".forumManager.activities.QuestionDetail" />
+        <activity android:name=".activities.DownloadedFile" />
         <activity
-            android:name=".Activities.PlateForm"
+            android:name=".activities.PlateForm"
             android:label="@string/title_activity_plate_form"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Reset_Password" />
-        <activity android:name=".Activities.Sing_in_sind_up" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".activities.Reset_Password" />
+        <activity android:name=".activities.Sing_in_sind_up" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".forumManager.services.PolyFastFCM"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

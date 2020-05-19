@@ -1,4 +1,4 @@
-package com.example.polyfast.forumManager;
+package com.example.polyfast.forumManager.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,7 +9,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,18 +29,32 @@ import com.example.polyfast.R;
 import com.example.polyfast.forumManager.database.ImageStorageHelper;
 import com.example.polyfast.forumManager.database.QuestionHelper;
 import com.example.polyfast.forumManager.database.SQLiteUserManager;
+import com.example.polyfast.forumManager.database.StudentHelper;
+import com.example.polyfast.forumManager.database.TeacherHelper;
+import com.example.polyfast.forumManager.models.Client;
+import com.example.polyfast.forumManager.models.Data;
 import com.example.polyfast.forumManager.models.ForumQuestion;
+import com.example.polyfast.forumManager.models.MyResponse;
+import com.example.polyfast.forumManager.models.Sender;
 import com.example.polyfast.forumManager.models.Student;
+import com.example.polyfast.forumManager.models.Teacher;
 import com.example.polyfast.forumManager.models.User;
+import com.example.polyfast.forumManager.services.ApiService;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.view.View.GONE;
 
@@ -59,12 +72,15 @@ public class AskQuestion extends AppCompatActivity {
    TextInputEditText label_question, description_question;
    TextInputLayout outline_label_question, outline_description_question, layout_material;
    AutoCompleteTextView material_view;
-   TextView error_image_description1, error_image_description2;
+   TextView error_image_description1, error_image_description2, text_loading1, text_loading2;
    EditText image_description1, image_description2;
    ImageButton deleted_image1, deleted_image2;
    Button posted_btn;
    ImageView imageView1, imageView2, chose_image;
    private ProgressBar progressBar1, progressBar2;
+
+   ApiService apiService;
+   private SQLiteUserManager sqlDb;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +94,9 @@ public class AskQuestion extends AppCompatActivity {
          getSupportActionBar().setDisplayShowHomeEnabled(true);
          getSupportActionBar().setTitle(R.string.new_question);
       }
+
+      sqlDb = new SQLiteUserManager(this);
+      apiService = Client.getClient("https://fcm.googleapis.com/").create(ApiService.class);
 
       numberImage[0] = 0;
       numberImage[1] = 0;
@@ -258,7 +277,7 @@ public class AskQuestion extends AppCompatActivity {
       posted_btn.setActivated(false);
       posted_btn.setBackgroundColor(getResources().getColor(R.color.darkLight));
 
-      User user = new SQLiteUserManager(this).getUserInfo();
+      User user = sqlDb.getUserInfo();
       String authorId = user.getId();
       String classLevel = ((Student)user).getClassLevel();
 
@@ -302,8 +321,11 @@ public class AskQuestion extends AppCompatActivity {
 
       QuestionHelper.addQuestion(forumQuestion)
             .addOnCompleteListener(complete -> {
-               if (complete.isSuccessful())
+               if (complete.isSuccessful()) {
+                  forumQuestion.setId(Objects.requireNonNull(complete.getResult()).getId());
+                  sendNotification(forumQuestion);
                   Toast.makeText(this, getString(R.string.post_is_success), Toast.LENGTH_SHORT).show();
+               }
                else
                   Toast.makeText(this, getString(R.string.error_has_provided), Toast.LENGTH_SHORT).show();
 
@@ -312,6 +334,99 @@ public class AskQuestion extends AppCompatActivity {
                finish();
             });
    }
+
+   /**
+    * Function to send the notification.
+    * @param question Question
+    */
+   private void sendNotification(ForumQuestion question) {
+
+      TeacherHelper.getCollectionReference().get()
+              .addOnCompleteListener(queries -> {
+                 if (!queries.isSuccessful()){
+                    Log.i(TAG, "sendNotification: error when get the users.", queries.getException());
+                    return;
+                 }
+
+                 List<DocumentSnapshot> documents = Objects.requireNonNull(queries.getResult()).getDocuments();
+
+                 for (DocumentSnapshot document : documents) {
+                    Teacher teacher = document.toObject(Teacher.class);
+                    assert teacher != null;
+                    teacher.setId(document.getId());
+                    String[] materials = teacher.getMaterial().split("/");
+
+                    for (String material : materials)
+                       if (material.equals(question.getMaterial())){
+                          sendUpStream(sqlDb.getUserInfo(), teacher.getToken(), question);
+                          Log.i(TAG, teacher + " are notify.");
+
+                       }
+
+                 }
+
+              });
+
+      Student student1 = (Student) sqlDb.getUserInfo();
+      StudentHelper.getCollectionReference().whereEqualTo("classLevel", student1.getClassLevel())
+            .get()
+            .addOnCompleteListener(task -> {
+               if (!task.isSuccessful()){
+                  Log.i(TAG, "sendNotification: error : ", task.getException());
+                  return;
+               }
+
+               List<DocumentSnapshot> documents = Objects.requireNonNull(task.getResult()).getDocuments();
+               for (DocumentSnapshot document : documents) {
+                  Student student = document.toObject(Student.class);
+
+                  assert student != null;
+                  student.setId(document.getId());
+
+                  if (student.getClassLevel().equals(question.getClassName())
+                        && !student.getId().equals(student1.getId())){
+                     sendUpStream(sqlDb.getUserInfo(), student.getToken(), question);
+                     Log.i(TAG, student + " are notify.");
+                  }
+               }
+            });
+
+   }
+
+   private void sendUpStream(User user, String token, ForumQuestion question) {
+
+      String senderStr = user.getName() + " " + user.getSurname();
+      Data data = new Data(senderStr, question.getLabel() +"/"+ question.getId(),
+            question.getMaterial(), "question");
+
+      Sender sender = new Sender(data, token);
+
+      apiService.sendNotification(sender)
+            .enqueue(new Callback<MyResponse>() {
+
+               @Override
+               public void onResponse(@NonNull Call<MyResponse> call,
+                                      @NonNull Response<MyResponse> response) {
+
+                  if (response.code() == 200){
+
+                     assert response.body() != null;
+
+                     if (response.body().success != 1)
+                        Toast.makeText(AskQuestion.this, getString(R.string.error_has_provided),
+                              Toast.LENGTH_SHORT).show();
+                     else
+                        Log.i(TAG, "onResponse: Notification is sent.");
+                  }
+               }
+
+               @Override
+               public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
+                  Log.i(TAG, "onFailure: The notification is not send.",t);
+               }
+            });
+   }
+
 
    /**
     * Function to get the question fields without images.
@@ -411,6 +526,8 @@ public class AskQuestion extends AppCompatActivity {
       layout_material = findViewById(R.id.layout_material);
       error_image_description1 = findViewById(R.id.error_image_description1);
       error_image_description2 = findViewById(R.id.error_image_description2);
+      text_loading1 = findViewById(R.id.text_loading1);
+      text_loading2 = findViewById(R.id.text_loading2);
       image_description1 = findViewById(R.id.image_description1);
       image_description2 = findViewById(R.id.image_description2);
       deleted_image1 = findViewById(R.id.deleted_image1);
@@ -561,6 +678,7 @@ public class AskQuestion extends AppCompatActivity {
       UploadTask uploadTask = ImageStorageHelper.add(imageUris[0], this);
       if (uploadTask != null) {
          progressBar1.setVisibility(View.VISIBLE);
+         text_loading1.setVisibility(View.VISIBLE);
          storageTask1 = uploadTask
                .addOnProgressListener(taskSnapshot -> {
                   double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
@@ -570,9 +688,6 @@ public class AskQuestion extends AppCompatActivity {
                .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(),
                      Toast.LENGTH_SHORT).show())
                .addOnSuccessListener(success -> {
-
-                  Handler handler = new Handler();
-                  handler.postDelayed(() -> progressBar1.setProgress(0), 100);
 
                   Toast.makeText(this, "Upload successful", Toast.LENGTH_LONG).show();
 
@@ -604,6 +719,7 @@ public class AskQuestion extends AppCompatActivity {
       UploadTask uploadTask = ImageStorageHelper.add(imageUris[1], this);
       if (uploadTask != null) {
          progressBar2.setVisibility(View.VISIBLE);
+         text_loading2.setVisibility(View.VISIBLE);
          storageTask2 = uploadTask
                .addOnProgressListener(taskSnapshot -> {
                   double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
@@ -613,9 +729,6 @@ public class AskQuestion extends AppCompatActivity {
                .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(),
                      Toast.LENGTH_SHORT).show())
                .addOnSuccessListener(success -> {
-
-                  Handler handler = new Handler();
-                  handler.postDelayed(() -> progressBar2.setProgress(0), 100);
 
                   Toast.makeText(this, "Upload successful", Toast.LENGTH_LONG).show();
 
@@ -646,8 +759,10 @@ public class AskQuestion extends AppCompatActivity {
       QuestionHelper.addQuestion(question)
             .addOnCompleteListener(complete -> {
 
-               if (complete.isSuccessful())
+               if (complete.isSuccessful()) {
+                  sendNotification(question);
                   Toast.makeText(this, getString(R.string.post_is_success), Toast.LENGTH_SHORT).show();
+               }
                else
                   Toast.makeText(this, getString(R.string.error_has_provided), Toast.LENGTH_SHORT).show();
 

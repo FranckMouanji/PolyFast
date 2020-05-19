@@ -1,18 +1,25 @@
-package com.example.polyfast.Activities;
+package com.example.polyfast.activities;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.polyfast.R;
 import com.example.polyfast.data_class.Temp_information_user;
 import com.example.polyfast.fireBase_fonction.Controller;
+import com.example.polyfast.forumManager.database.SQLiteUserManager;
+import com.example.polyfast.forumManager.database.StudentHelper;
+import com.example.polyfast.forumManager.database.TeacherHelper;
+import com.example.polyfast.forumManager.models.Student;
+import com.example.polyfast.forumManager.models.Token;
+import com.example.polyfast.forumManager.models.User;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,6 +30,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.Objects;
 
 public class PlateForm extends AppCompatActivity {
 
@@ -42,7 +51,7 @@ public class PlateForm extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_cour, R.id.nav_exercice, R.id.nav_correction_exercice, R.id.nav_uplode_file,
-                R.id.nav_a_propos, R.id.nav_nous_contacter, R.id.nav_compte)
+                R.id.nav_forum, R.id.nav_a_propos, R.id.nav_nous_contacter, R.id.nav_compte)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -63,6 +72,29 @@ public class PlateForm extends AppCompatActivity {
             user_name.setText(getResources().getString(R.string.app_name));
             user_address.setText(getResources().getString(R.string.app_mail));
         }
+        // Navigate to the forum fragment where click on the notification summary.
+        if (getIntent() != null && getIntent().hasExtra("fragment_id")){
+            int fragmentId = getIntent().getIntExtra("fragment_id", R.id.nav_forum);
+            navController.navigate(fragmentId);
+        }
+
+        // FIREBASE INSTANCE ID TOKEN.
+        // Update the user token.
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Token token = new Token(Objects.requireNonNull(task.getResult()).getToken());
+                Log.i("MainActivity", "Token : " + token.getToken());
+                SQLiteUserManager db = new SQLiteUserManager(this);
+                if (db.userInfoExist()) {
+                    User user = db.getUserInfo();
+
+                    if (user instanceof Student)
+                        StudentHelper.updateToken(token.getToken(), user.getId());
+                    else
+                        TeacherHelper.updateToken(token.getToken(), user.getId());
+                }
+            }
+        });
 
 
     }

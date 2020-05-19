@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Date;
 
-public class ForumComment extends ForumModelsFactory{
+public class ForumComment{
 
    private String id;
    private String authorId;
